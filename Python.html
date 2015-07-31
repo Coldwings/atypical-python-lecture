@@ -1,259 +1,1081 @@
-<!doctype html>
-<html lang='en'>
-<head>
-<meta charset='utf-8'>
-<title>Typora</title><link href='http://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'><style type='text/css'>html, body {overflow-x: initial !important;}.CodeMirror { height: auto; }
-.CodeMirror-scroll { overflow-y: hidden; overflow-x: auto; }
-.CodeMirror-lines { padding: 4px 0px; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler { background-color: white; }
-.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-color: rgb(247, 247, 247); white-space: nowrap; }
-.CodeMirror-linenumbers { }
-.CodeMirror-linenumber { padding: 0px 3px 0px 5px; min-width: 20px; text-align: right; color: rgb(153, 153, 153); }
-.CodeMirror div.CodeMirror-cursor { border-left-width: 1px; border-left-style: solid; border-left-color: black; z-index: 3; }
-.CodeMirror div.CodeMirror-secondarycursor { border-left-width: 1px; border-left-style: solid; border-left-color: silver; }
-.CodeMirror.cm-keymap-fat-cursor div.CodeMirror-cursor { width: auto; border: 0px; background-color: rgb(119, 238, 119); z-index: 1; background-position: initial initial; background-repeat: initial initial; }
-.CodeMirror div.CodeMirror-cursor.CodeMirror-overwrite { }
-.cm-tab { display: inline-block; }
-.cm-s-default .cm-keyword { color: rgb(119, 0, 136); }
-.cm-s-default .cm-atom { color: rgb(34, 17, 153); }
-.cm-s-default .cm-number { color: rgb(17, 102, 68); }
-.cm-s-default .cm-def { color: rgb(0, 0, 255); }
-.cm-s-default .cm-variable { color: black; }
-.cm-s-default .cm-variable-2 { color: rgb(0, 85, 170); }
-.cm-s-default .cm-variable-3 { color: rgb(0, 136, 85); }
-.cm-s-default .cm-property { color: black; }
-.cm-s-default .cm-operator { color: black; }
-.cm-s-default .cm-comment { color: rgb(170, 85, 0); }
-.cm-s-default .cm-string { color: rgb(170, 17, 17); }
-.cm-s-default .cm-string-2 { color: rgb(255, 85, 0); }
-.cm-s-default .cm-meta { color: rgb(85, 85, 85); }
-.cm-s-default .cm-qualifier { color: rgb(85, 85, 85); }
-.cm-s-default .cm-builtin { color: rgb(51, 0, 170); }
-.cm-s-default .cm-bracket { color: rgb(153, 153, 119); }
-.cm-s-default .cm-tag { color: rgb(17, 119, 0); }
-.cm-s-default .cm-attribute { color: rgb(0, 0, 204); }
-.cm-s-default .cm-header { color: blue; }
-.cm-s-default .cm-quote { color: rgb(0, 153, 0); }
-.cm-s-default .cm-hr { color: rgb(153, 153, 153); }
-.cm-s-default .cm-link { color: rgb(0, 0, 204); }
-.cm-negative { color: rgb(221, 68, 68); }
-.cm-positive { color: rgb(34, 153, 34); }
-.cm-header, .cm-strong { font-weight: bold; }
-.cm-em { font-style: italic; }
-.cm-link { text-decoration: underline; }
-.cm-s-default .cm-error { color: rgb(255, 0, 0); }
-.cm-invalidchar { color: rgb(255, 0, 0); }
-div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
-div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
-.CodeMirror-activeline-background { background-color: rgb(232, 242, 255); background-position: initial initial; background-repeat: initial initial; }
-.CodeMirror { position: relative; overflow: hidden; }
-.CodeMirror-scroll { margin-bottom: -30px; margin-right: -30px; padding-bottom: 30px; padding-right: 30px; height: 100%; outline: none; position: relative; box-sizing: content-box; }
-.CodeMirror-sizer { position: relative; }
-.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler { position: absolute; z-index: 6; display: none; }
-.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow-x: hidden; overflow-y: scroll; }
-.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow-y: hidden; overflow-x: scroll; }
-.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
-.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
-.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
-.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
-.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
-.CodeMirror-lines { cursor: text; }
-.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; background-color: transparent; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: initial initial; background-repeat: initial initial; }
-.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
-.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: -webkit-fit-content; }
-.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
-.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
-.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
-.CodeMirror-widget { }
-.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
-.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
-.CodeMirror-measure pre { position: static; }
-.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
-.CodeMirror-focused div.CodeMirror-cursor { visibility: visible; }
-.CodeMirror-selected { background-color: rgb(217, 217, 217); background-position: initial initial; background-repeat: initial initial; }
-.CodeMirror-focused .CodeMirror-selected { background-color: rgb(215, 212, 240); background-position: initial initial; background-repeat: initial initial; }
-.cm-searching { background-color: rgba(255, 255, 0, 0.4); background-position: initial initial; background-repeat: initial initial; }
-.CodeMirror span { }
-@media print { 
-  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+  padding-top: 2em;
+  line-height: 1.2;
+  border-top: 3px solid #eee;
+}
+
+h2 {
+  font-size: 24px;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
 }
 
 
-html { font-size: 14px; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.42857143; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); overflow-x: hidden; }
-a:active, a:hover { outline: 0px; }
-::selection { background-color: rgb(181, 214, 252); text-shadow: none; background-position: initial initial; background-repeat: initial initial; }
-#write { max-width: 854px; margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: pre-wrap; text-align: justify; padding-bottom: 70px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export #write { margin: 0px auto; }
-#write > p:first-child, #write > ul:first-child, #write > pre:first-child, #write > blockquote:first-child, #write > div:first-child { margin-top: 30px; }
-img { max-width: 100%; }
-input, button, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-::before, ::after, * { box-sizing: border-box; }
-#write p, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write div, #write pre { width: inherit; }
-h1 { font-size: 2rem; }
-p, .mathjax-block { display: block; -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: bold; font-style: italic; }
-a { cursor: pointer; }
-li span { min-width: 10px; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; margin: 4px 0px 0px; }
-tr { page-break-inside: avoid; page-break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; page-break-inside: auto; }
-table.md-table td { min-width: 80px; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror-code pre { padding: 0px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-.md-fences, pre.md-fences { font-size: 0.9rem; display: block; page-break-inside: avoid; text-align: left; overflow: visible; white-space: normal; position: relative !important; }
-.md-fences.mock-cm { white-space: pre-wrap; }
-.footnotes { color: rgb(136, 136, 136); font-size: 0.9rem; padding-top: 1em; padding-bottom: 1em; }
-.footnotes + .footnotes { margin-top: -1em; }
-sub, sup { line-height: inherit; position: inherit; top: inherit; vertical-align: super; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background-color: transparent; text-decoration: none; color: rgb(51, 51, 51); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1rem; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: normal; text-align: left; box-sizing: content-box; direction: ltr; background-position: initial initial; background-repeat: initial initial; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li p, li .mathjax-block { margin: 0.5rem 0px; }
-li { margin: 0px; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; }
-@media print { 
-  html, body { height: 100%; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
 }
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-#write pre.md-meta-block { font-size: 0.8rem; min-height: 2.86rem; white-space: pre; background-color: rgb(204, 204, 204); display: block; background-position: initial initial; background-repeat: initial initial; }
-p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.mathjax-block { white-space: pre; padding-bottom: 0.65rem; overflow: hidden; width: 100%; }
-p + .mathjax-block { margin-top: -1.143rem; }
-.mathjax-block:not(:empty)::after { display: none; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: none; box-shadow: none; }
-:focus { outline: none; box-shadow: rgb(79, 172, 249) 0px 0px 2px 3px, rgb(120, 174, 218) 0px 0px 2px inset; }
-.task-list { list-style-type: none; }
-.task-list-item { position: relative; padding-left: 1em; }
-.task-list-item input { position: absolute; top: 0px; left: 0px; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc::after, .md-toc-content::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: bold; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-.md-toc-h6 { margin-left: 12em; }
-@media screen and (max-width: 48em) { 
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 8em; }
-  .md-toc-h6 { margin-left: 9.5em; }
+
+a:hover {
+  text-decoration: underline;
 }
-a.md-toc-inner { color: inherit; font-size: inherit; font-style: inherit; font-weight: inherit; text-decoration: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.md-attr { display: none; }
-.md-fn-count::after { content: '.'; }
-.md-tag { opacity: 0.5; }
-h1 .md-tag, h2 .md-tag, h3 .md-tag, h4 .md-tag, h5 .md-tag, h6 .md-tag { font-weight: initial; opacity: 0.35; }
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: normal;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+  white-space: pre-wrap;
+ }
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+/*table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}*/
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+
+p{
+  text-indent: 2em;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+</style><style>.codehilite pre .hll { background-color: #f8eec7 }
+.codehilite pre  { background: #ffffff; color: #333333 }
+.codehilite pre .c { color: #999988; font-style: italic } /* Comment */
+.codehilite pre .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.codehilite pre .k { font-weight: bold } /* Keyword */
+.codehilite pre .n { color: #333333 } /* Name */
+.codehilite pre .o { font-weight: bold } /* Operator */
+.codehilite pre .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.codehilite pre .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.codehilite pre .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.codehilite pre .cs { color: #999988; font-style: italic } /* Comment.Special */
+.codehilite pre .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.codehilite pre .ge { font-style: italic } /* Generic.Emph */
+.codehilite pre .gr { color: #aa0000 } /* Generic.Error */
+.codehilite pre .gh { color: #999999 } /* Generic.Heading */
+.codehilite pre .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.codehilite pre .go { color: #888888 } /* Generic.Output */
+.codehilite pre .gp { color: #555555 } /* Generic.Prompt */
+.codehilite pre .gs { font-weight: bold } /* Generic.Strong */
+.codehilite pre .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite pre .gt { color: #aa0000 } /* Generic.Traceback */
+.codehilite pre .kc { font-weight: bold } /* Keyword.Constant */
+.codehilite pre .kd { font-weight: bold } /* Keyword.Declaration */
+.codehilite pre .kn { font-weight: bold } /* Keyword.Namespace */
+.codehilite pre .kp { font-weight: bold } /* Keyword.Pseudo */
+.codehilite pre .kr { font-weight: bold } /* Keyword.Reserved */
+.codehilite pre .kt { font-weight: bold } /* Keyword.Type */
+.codehilite pre .m { color: #945277 } /* Literal.Number */
+.codehilite pre .s { color: #df5000 } /* Literal.String */
+.codehilite pre .na { color: #008080 } /* Name.Attribute */
+.codehilite pre .nb { color: #0086b3 } /* Name.Builtin */
+.codehilite pre .nc { color: #445588; font-weight: bold } /* Name.Class */
+.codehilite pre .no { color: #094e99 } /* Name.Constant */
+.codehilite pre .nd { color: #333333 } /* Name.Decorator */
+.codehilite pre .ni { color: #800080 } /* Name.Entity */
+.codehilite pre .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.codehilite pre .nf { color: #945277; font-weight: bold } /* Name.Function */
+.codehilite pre .nl { color: #333333 } /* Name.Label */
+.codehilite pre .nn { color: #555555 } /* Name.Namespace */
+.codehilite pre .nx { color: #333333 } /* Name.Other */
+.codehilite pre .py { color: #333333 } /* Name.Property */
+.codehilite pre .nt { color: #000080 } /* Name.Tag */
+.codehilite pre .nv { color: #008080 } /* Name.Variable */
+.codehilite pre .ow { font-weight: bold } /* Operator.Word */
+.codehilite pre .w { color: #bbbbbb } /* Text.Whitespace */
+.codehilite pre .mb { color: #945277 } /* Literal.Number.Bin */
+.codehilite pre .mf { color: #945277 } /* Literal.Number.Float */
+.codehilite pre .mh { color: #945277 } /* Literal.Number.Hex */
+.codehilite pre .mi { color: #945277 } /* Literal.Number.Integer */
+.codehilite pre .mo { color: #945277 } /* Literal.Number.Oct */
+.codehilite pre .sb { color: #df5000 } /* Literal.String.Backtick */
+.codehilite pre .sc { color: #df5000 } /* Literal.String.Char */
+.codehilite pre .sd { color: #df5000 } /* Literal.String.Doc */
+.codehilite pre .s2 { color: #df5000 } /* Literal.String.Double */
+.codehilite pre .se { color: #df5000 } /* Literal.String.Escape */
+.codehilite pre .sh { color: #df5000 } /* Literal.String.Heredoc */
+.codehilite pre .si { color: #df5000 } /* Literal.String.Interpol */
+.codehilite pre .sx { color: #df5000 } /* Literal.String.Other */
+.codehilite pre .sr { color: #017936 } /* Literal.String.Regex */
+.codehilite pre .s1 { color: #df5000 } /* Literal.String.Single */
+.codehilite pre .ss { color: #8b467f } /* Literal.String.Symbol */
+.codehilite pre .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.codehilite pre .vc { color: #008080 } /* Name.Variable.Class */
+.codehilite pre .vg { color: #008080 } /* Name.Variable.Global */
+.codehilite pre .vi { color: #008080 } /* Name.Variable.Instance */
+.codehilite pre .il { color: #945277 } /* Literal.Number.Integer.Long */</style><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: false
+  },
+  TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  showProcessingMessages: false
+});
+</script>
+<script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.4/sequence-diagram-min.js"></script>
+<script type="text/javascript">// flowchart, v1.3.4
+// Copyright (c)2014 Adriano Raiano (adrai).
+// Distributed under MIT license
+// http://adrai.github.io/flowchart.js
+!function(){function a(b,c){if(!b||"function"==typeof b)return c;var d={};for(var e in c)d[e]=c[e];for(e in b)b[e]&&(d[e]="object"==typeof d[e]?a(d[e],b[e]):b[e]);return d}function b(a,b){if("function"==typeof Object.create)a.super_=b,a.prototype=Object.create(b.prototype,{constructor:{value:a,enumerable:!1,writable:!0,configurable:!0}});else{a.super_=b;var c=function(){};c.prototype=b.prototype,a.prototype=new c,a.prototype.constructor=a}}function c(a,b,c){var d,e,f="M{0},{1}";for(d=2,e=2*c.length+2;e>d;d+=2)f+=" L{"+d+"},{"+(d+1)+"}";var g=[b.x,b.y];for(d=0,e=c.length;e>d;d++)g.push(c[d].x),g.push(c[d].y);var h=a.paper.path(f,g);h.attr("stroke",a.options["element-color"]),h.attr("stroke-width",a.options["line-width"]);var i=a.options.font,j=a.options["font-family"],k=a.options["font-weight"];return i&&h.attr({font:i}),j&&h.attr({"font-family":j}),k&&h.attr({"font-weight":k}),h}function d(a,b,c,d){var e,f;"[object Array]"!==Object.prototype.toString.call(c)&&(c=[c]);var g="M{0},{1}";for(e=2,f=2*c.length+2;f>e;e+=2)g+=" L{"+e+"},{"+(e+1)+"}";var h=[b.x,b.y];for(e=0,f=c.length;f>e;e++)h.push(c[e].x),h.push(c[e].y);var i=a.paper.path(g,h);i.attr({stroke:a.options["line-color"],"stroke-width":a.options["line-width"],"arrow-end":a.options["arrow-end"]});var j=a.options.font,k=a.options["font-family"],l=a.options["font-weight"];if(j&&i.attr({font:j}),k&&i.attr({"font-family":k}),l&&i.attr({"font-weight":l}),d){var m=!1,n=a.paper.text(0,0,d),o=!1,p=c[0];b.y===p.y&&(o=!0);var q=0,r=0;m?(q=b.x>p.x?b.x-(b.x-p.x)/2:p.x-(p.x-b.x)/2,r=b.y>p.y?b.y-(b.y-p.y)/2:p.y-(p.y-b.y)/2,o?(q-=n.getBBox().width/2,r-=a.options["text-margin"]):(q+=a.options["text-margin"],r-=n.getBBox().height/2)):(q=b.x,r=b.y,o?(q+=a.options["text-margin"]/2,r-=a.options["text-margin"]):(q+=a.options["text-margin"]/2,r+=a.options["text-margin"])),n.attr({"text-anchor":"start","font-size":a.options["font-size"],fill:a.options["font-color"],x:q,y:r}),j&&n.attr({font:j}),k&&n.attr({"font-family":k}),l&&n.attr({"font-weight":l})}return i}function e(a,b,c,d,e,f,g,h){var i,j,k,l,m,n={x:null,y:null,onLine1:!1,onLine2:!1};return i=(h-f)*(c-a)-(g-e)*(d-b),0===i?n:(j=b-f,k=a-e,l=(g-e)*j-(h-f)*k,m=(c-a)*j-(d-b)*k,j=l/i,k=m/i,n.x=a+j*(c-a),n.y=b+j*(d-b),j>0&&1>j&&(n.onLine1=!0),k>0&&1>k&&(n.onLine2=!0),n)}function f(a,b){b=b||{},this.paper=new Raphael(a),this.options=r.defaults(b,q),this.symbols=[],this.lines=[],this.start=null}function g(a,b,c){this.chart=a,this.group=this.chart.paper.set(),this.symbol=c,this.connectedTo=[],this.symbolType=b.symbolType,this.flowstate=b.flowstate||"future",this.next_direction=b.next&&b.direction_next?b.direction_next:void 0,this.text=this.chart.paper.text(0,0,b.text),b.key&&(this.text.node.id=b.key+"t"),this.text.node.setAttribute("class",this.getAttr("class")+"t"),this.text.attr({"text-anchor":"start",x:this.getAttr("text-margin"),fill:this.getAttr("font-color"),"font-size":this.getAttr("font-size")});var d=this.getAttr("font"),e=this.getAttr("font-family"),f=this.getAttr("font-weight");d&&this.text.attr({font:d}),e&&this.text.attr({"font-family":e}),f&&this.text.attr({"font-weight":f}),b.link&&this.text.attr("href",b.link),b.target&&this.text.attr("target",b.target);var g=this.getAttr("maxWidth");if(g){for(var h=b.text.split(" "),i="",j=0,k=h.length;k>j;j++){var l=h[j];this.text.attr("text",i+" "+l),i+=this.text.getBBox().width>g?"\n"+l:" "+l}this.text.attr("text",i.substring(1))}if(this.group.push(this.text),c){var m=this.getAttr("text-margin");c.attr({fill:this.getAttr("fill"),stroke:this.getAttr("element-color"),"stroke-width":this.getAttr("line-width"),width:this.text.getBBox().width+2*m,height:this.text.getBBox().height+2*m}),c.node.setAttribute("class",this.getAttr("class")),b.link&&c.attr("href",b.link),b.target&&c.attr("target",b.target),b.key&&(c.node.id=b.key),this.group.push(c),c.insertBefore(this.text),this.text.attr({y:c.getBBox().height/2}),this.initialize()}}function h(a,b){var c=a.paper.rect(0,0,0,0,20);b=b||{},b.text=b.text||"Start",g.call(this,a,b,c)}function i(a,b){var c=a.paper.rect(0,0,0,0,20);b=b||{},b.text=b.text||"End",g.call(this,a,b,c)}function j(a,b){var c=a.paper.rect(0,0,0,0);b=b||{},g.call(this,a,b,c)}function k(a,b){var c=a.paper.rect(0,0,0,0);b=b||{},g.call(this,a,b,c),c.attr({width:this.text.getBBox().width+4*this.getAttr("text-margin")}),this.text.attr({x:2*this.getAttr("text-margin")});var d=a.paper.rect(0,0,0,0);d.attr({x:this.getAttr("text-margin"),stroke:this.getAttr("element-color"),"stroke-width":this.getAttr("line-width"),width:this.text.getBBox().width+2*this.getAttr("text-margin"),height:this.text.getBBox().height+2*this.getAttr("text-margin"),fill:this.getAttr("fill")}),b.key&&(d.node.id=b.key+"i");var e=this.getAttr("font"),f=this.getAttr("font-family"),h=this.getAttr("font-weight");e&&d.attr({font:e}),f&&d.attr({"font-family":f}),h&&d.attr({"font-weight":h}),b.link&&d.attr("href",b.link),b.target&&d.attr("target",b.target),this.group.push(d),d.insertBefore(this.text),this.initialize()}function l(a,b){b=b||{},g.call(this,a,b),this.textMargin=this.getAttr("text-margin"),this.text.attr({x:3*this.textMargin});var d=this.text.getBBox().width+4*this.textMargin,e=this.text.getBBox().height+2*this.textMargin,f=this.textMargin,h=e/2,i={x:f,y:h},j=[{x:f-this.textMargin,y:e},{x:f-this.textMargin+d,y:e},{x:f-this.textMargin+d+2*this.textMargin,y:0},{x:f-this.textMargin+2*this.textMargin,y:0},{x:f,y:h}],k=c(a,i,j);k.attr({stroke:this.getAttr("element-color"),"stroke-width":this.getAttr("line-width"),fill:this.getAttr("fill")}),b.link&&k.attr("href",b.link),b.target&&k.attr("target",b.target),b.key&&(k.node.id=b.key),k.node.setAttribute("class",this.getAttr("class")),this.text.attr({y:k.getBBox().height/2}),this.group.push(k),k.insertBefore(this.text),this.initialize()}function m(a,b){b=b||{},g.call(this,a,b),this.textMargin=this.getAttr("text-margin"),this.yes_direction="bottom",this.no_direction="right",b.yes&&b.direction_yes&&b.no&&!b.direction_no?"right"===b.direction_yes?(this.no_direction="bottom",this.yes_direction="right"):(this.no_direction="right",this.yes_direction="bottom"):b.yes&&!b.direction_yes&&b.no&&b.direction_no?"right"===b.direction_no?(this.yes_direction="bottom",this.no_direction="right"):(this.yes_direction="right",this.no_direction="bottom"):(this.yes_direction="bottom",this.no_direction="right"),this.yes_direction=this.yes_direction||"bottom",this.no_direction=this.no_direction||"right",this.text.attr({x:2*this.textMargin});var d=this.text.getBBox().width+3*this.textMargin;d+=d/2;var e=this.text.getBBox().height+2*this.textMargin;e+=e/2,e=Math.max(.5*d,e);var f=d/4,h=e/4;this.text.attr({x:f+this.textMargin/2});var i={x:f,y:h},j=[{x:f-d/4,y:h+e/4},{x:f-d/4+d/2,y:h+e/4+e/2},{x:f-d/4+d,y:h+e/4},{x:f-d/4+d/2,y:h+e/4-e/2},{x:f-d/4,y:h+e/4}],k=c(a,i,j);k.attr({stroke:this.getAttr("element-color"),"stroke-width":this.getAttr("line-width"),fill:this.getAttr("fill")}),b.link&&k.attr("href",b.link),b.target&&k.attr("target",b.target),b.key&&(k.node.id=b.key),k.node.setAttribute("class",this.getAttr("class")),this.text.attr({y:k.getBBox().height/2}),this.group.push(k),k.insertBefore(this.text),this.initialize()}function n(a){function b(a){var b=a.indexOf("(")+1,c=a.indexOf(")");return b>=0&&c>=0?d.symbols[a.substring(0,b-1)]:d.symbols[a]}function c(a){var b="next",c=a.indexOf("(")+1,d=a.indexOf(")");return c>=0&&d>=0&&(b=D.substring(c,d),b.indexOf(",")<0&&"yes"!==b&&"no"!==b&&(b="next, "+b)),b}a=a||"",a=a.trim();for(var d={symbols:{},start:null,drawSVG:function(a,b){function c(a){if(g[a.key])return g[a.key];switch(a.symbolType){case"start":g[a.key]=new h(e,a);break;case"end":g[a.key]=new i(e,a);break;case"operation":g[a.key]=new j(e,a);break;case"inputoutput":g[a.key]=new l(e,a);break;case"subroutine":g[a.key]=new k(e,a);break;case"condition":g[a.key]=new m(e,a);break;default:return new Error("Wrong symbol type!")}return g[a.key]}var d=this;this.diagram&&this.diagram.clean();var e=new f(a,b);this.diagram=e;var g={};!function n(a,b,f){var g=c(a);return d.start===a?e.startWith(g):b&&f&&!b.pathOk&&(b instanceof m?(f.yes===a&&b.yes(g),f.no===a&&b.no(g)):b.then(g)),g.pathOk?g:(g instanceof m?(a.yes&&n(a.yes,g,a),a.no&&n(a.no,g,a)):a.next&&n(a.next,g,a),g)}(this.start),e.render()},clean:function(){this.diagram.clean()}},e=[],g=0,n=1,o=a.length;o>n;n++)if("\n"===a[n]&&"\\"!==a[n-1]){var p=a.substring(g,n);g=n+1,e.push(p.replace(/\\\n/g,"\n"))}g<a.length&&e.push(a.substr(g));for(var q=1,r=e.length;r>q;){var s=e[q];s.indexOf(": ")<0&&s.indexOf("(")<0&&s.indexOf(")")<0&&s.indexOf("->")<0&&s.indexOf("=>")<0?(e[q-1]+="\n"+s,e.splice(q,1),r--):q++}for(;e.length>0;){var t=e.splice(0,1)[0];if(t.indexOf("=>")>=0){var u,v=t.split("=>"),w={key:v[0],symbolType:v[1],text:null,link:null,target:null,flowstate:null};if(w.symbolType.indexOf(": ")>=0&&(u=w.symbolType.split(": "),w.symbolType=u[0],w.text=u[1]),w.text&&w.text.indexOf(":>")>=0?(u=w.text.split(":>"),w.text=u[0],w.link=u[1]):w.symbolType.indexOf(":>")>=0&&(u=w.symbolType.split(":>"),w.symbolType=u[0],w.link=u[1]),w.symbolType.indexOf("\n")>=0&&(w.symbolType=w.symbolType.split("\n")[0]),w.link){var x=w.link.indexOf("[")+1,y=w.link.indexOf("]");x>=0&&y>=0&&(w.target=w.link.substring(x,y),w.link=w.link.substring(0,x-1))}if(w.text&&w.text.indexOf("|")>=0){var z=w.text.split("|");w.text=z[0],w.flowstate=z[1].trim()}d.symbols[w.key]=w}else if(t.indexOf("->")>=0)for(var A=t.split("->"),B=0,C=A.length;C>B;B++){var D=A[B],E=b(D),F=c(D),G=null;if(F.indexOf(",")>=0){var H=F.split(",");F=H[0],G=H[1].trim()}if(d.start||(d.start=E),C>B+1){var I=A[B+1];E[F]=b(I),E["direction_"+F]=G,G=null}}}return d}Array.prototype.indexOf||(Array.prototype.indexOf=function(a){"use strict";if(null===this)throw new TypeError;var b=Object(this),c=b.length>>>0;if(0===c)return-1;var d=0;if(arguments.length>0&&(d=Number(arguments[1]),d!=d?d=0:0!==d&&1/0!=d&&d!=-1/0&&(d=(d>0||-1)*Math.floor(Math.abs(d)))),d>=c)return-1;for(var e=d>=0?d:Math.max(c-Math.abs(d),0);c>e;e++)if(e in b&&b[e]===a)return e;return-1}),Array.prototype.lastIndexOf||(Array.prototype.lastIndexOf=function(a){"use strict";if(null===this)throw new TypeError;var b=Object(this),c=b.length>>>0;if(0===c)return-1;var d=c;arguments.length>1&&(d=Number(arguments[1]),d!=d?d=0:0!==d&&d!=1/0&&d!=-(1/0)&&(d=(d>0||-1)*Math.floor(Math.abs(d))));for(var e=d>=0?Math.min(d,c-1):c-Math.abs(d);e>=0;e--)if(e in b&&b[e]===a)return e;return-1}),String.prototype.trim||(String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g,"")});var o=this,p={};"undefined"!=typeof module&&module.exports?module.exports=p:o.flowchart=o.flowchart||p;var q={x:0,y:0,"line-width":3,"line-length":50,"text-margin":10,"font-size":14,"font-color":"black","line-color":"black","element-color":"black",fill:"white","yes-text":"yes","no-text":"no","arrow-end":"block","class":"flowchart",symbols:{start:{},end:{},condition:{},inputoutput:{},operation:{},subroutine:{}}},r={defaults:a,inherits:b};f.prototype.handle=function(a){this.symbols.indexOf(a)<=-1&&this.symbols.push(a);var b=this;return a instanceof m?(a.yes=function(c){return a.yes_symbol=c,a.no_symbol&&(a.pathOk=!0),b.handle(c)},a.no=function(c){return a.no_symbol=c,a.yes_symbol&&(a.pathOk=!0),b.handle(c)}):a.then=function(c){return a.next=c,a.pathOk=!0,b.handle(c)},a},f.prototype.startWith=function(a){return this.start=a,this.handle(a)},f.prototype.render=function(){var a,b=0,c=0,d=0,e=0,f=0,g=0;for(d=0,e=this.symbols.length;e>d;d++)a=this.symbols[d],a.width>b&&(b=a.width),a.height>c&&(c=a.height);for(d=0,e=this.symbols.length;e>d;d++)a=this.symbols[d],a.shiftX(this.options.x+(b-a.width)/2+this.options["line-width"]),a.shiftY(this.options.y+(c-a.height)/2+this.options["line-width"]);for(this.start.render(),d=0,e=this.symbols.length;e>d;d++)a=this.symbols[d],a.renderLines();for(f=this.maxXFromLine,d=0,e=this.symbols.length;e>d;d++){a=this.symbols[d];var h=a.getX()+a.width,i=a.getY()+a.height;h>f&&(f=h),i>g&&(g=i)}this.paper.setSize(f+this.options["line-width"],g+this.options["line-width"])},f.prototype.clean=function(){if(this.paper){var a=this.paper.canvas;a.parentNode.removeChild(a)}},g.prototype.getAttr=function(a){if(!this.chart)return void 0;var b,c=this.chart.options?this.chart.options[a]:void 0,d=this.chart.options.symbols?this.chart.options.symbols[this.symbolType][a]:void 0;return this.chart.options.flowstate&&this.chart.options.flowstate[this.flowstate]&&(b=this.chart.options.flowstate[this.flowstate][a]),b||d||c},g.prototype.initialize=function(){this.group.transform("t"+this.getAttr("line-width")+","+this.getAttr("line-width")),this.width=this.group.getBBox().width,this.height=this.group.getBBox().height},g.prototype.getCenter=function(){return{x:this.getX()+this.width/2,y:this.getY()+this.height/2}},g.prototype.getX=function(){return this.group.getBBox().x},g.prototype.getY=function(){return this.group.getBBox().y},g.prototype.shiftX=function(a){this.group.transform("t"+(this.getX()+a)+","+this.getY())},g.prototype.setX=function(a){this.group.transform("t"+a+","+this.getY())},g.prototype.shiftY=function(a){this.group.transform("t"+this.getX()+","+(this.getY()+a))},g.prototype.setY=function(a){this.group.transform("t"+this.getX()+","+a)},g.prototype.getTop=function(){var a=this.getY(),b=this.getX()+this.width/2;return{x:b,y:a}},g.prototype.getBottom=function(){var a=this.getY()+this.height,b=this.getX()+this.width/2;return{x:b,y:a}},g.prototype.getLeft=function(){var a=this.getY()+this.group.getBBox().height/2,b=this.getX();return{x:b,y:a}},g.prototype.getRight=function(){var a=this.getY()+this.group.getBBox().height/2,b=this.getX()+this.group.getBBox().width;return{x:b,y:a}},g.prototype.render=function(){if(this.next){var a=this.getAttr("line-length");if("right"===this.next_direction){var b=this.getRight();if(this.next.getLeft(),!this.next.isPositioned){this.next.setY(b.y-this.next.height/2),this.next.shiftX(this.group.getBBox().x+this.width+a);var c=this;!function e(){for(var b,d=!1,f=0,g=c.chart.symbols.length;g>f;f++){b=c.chart.symbols[f];var h=Math.abs(b.getCenter().x-c.next.getCenter().x);if(b.getCenter().y>c.next.getCenter().y&&h<=c.next.width/2){d=!0;break}}d&&(c.next.setX(b.getX()+b.width+a),e())}(),this.next.isPositioned=!0,this.next.render()}}else{var d=this.getBottom();this.next.getTop(),this.next.isPositioned||(this.next.shiftY(this.getY()+this.height+a),this.next.setX(d.x-this.next.width/2),this.next.isPositioned=!0,this.next.render())}}},g.prototype.renderLines=function(){this.next&&(this.next_direction?this.drawLineTo(this.next,"",this.next_direction):this.drawLineTo(this.next))},g.prototype.drawLineTo=function(a,b,c){this.connectedTo.indexOf(a)<0&&this.connectedTo.push(a);var f,g=this.getCenter().x,h=this.getCenter().y,i=(this.getTop(),this.getRight()),j=this.getBottom(),k=this.getLeft(),l=a.getCenter().x,m=a.getCenter().y,n=a.getTop(),o=a.getRight(),p=(a.getBottom(),a.getLeft()),q=g===l,r=h===m,s=m>h,t=h>m,u=g>l,v=l>g,w=0,x=this.getAttr("line-length"),y=this.getAttr("line-width");if(c&&"bottom"!==c||!q||!s)if(c&&"right"!==c||!r||!v)if(c&&"left"!==c||!r||!u)if(c&&"right"!==c||!q||!t)if(c&&"right"!==c||!q||!s)if(c&&"bottom"!==c||!u)if(c&&"bottom"!==c||!v)if(c&&"right"===c&&u)f=d(this.chart,i,[{x:i.x+x/2,y:i.y},{x:i.x+x/2,y:n.y-x/2},{x:n.x,y:n.y-x/2},{x:n.x,y:n.y}],b),this.rightStart=!0,a.topEnd=!0,w=i.x+x/2;else if(c&&"right"===c&&v)f=d(this.chart,i,[{x:n.x,y:i.y},{x:n.x,y:n.y}],b),this.rightStart=!0,a.topEnd=!0,w=i.x+x/2;else if(c&&"bottom"===c&&q&&t)f=d(this.chart,j,[{x:j.x,y:j.y+x/2},{x:i.x+x/2,y:j.y+x/2},{x:i.x+x/2,y:n.y-x/2},{x:n.x,y:n.y-x/2},{x:n.x,y:n.y}],b),this.bottomStart=!0,a.topEnd=!0,w=j.x+x/2;else if("left"===c&&q&&t){var z=k.x-x/2;p.x<k.x&&(z=p.x-x/2),f=d(this.chart,k,[{x:z,y:k.y},{x:z,y:n.y-x/2},{x:n.x,y:n.y-x/2},{x:n.x,y:n.y}],b),this.leftStart=!0,a.topEnd=!0,w=k.x}else"left"===c&&(f=d(this.chart,k,[{x:n.x+(k.x-n.x)/2,y:k.y},{x:n.x+(k.x-n.x)/2,y:n.y-x/2},{x:n.x,y:n.y-x/2},{x:n.x,y:n.y}],b),this.leftStart=!0,a.topEnd=!0,w=k.x);else f=d(this.chart,j,[{x:j.x,y:j.y+x/2},{x:j.x+(j.x-n.x)/2,y:j.y+x/2},{x:j.x+(j.x-n.x)/2,y:n.y-x/2},{x:n.x,y:n.y-x/2},{x:n.x,y:n.y}],b),this.bottomStart=!0,a.topEnd=!0,w=j.x+(j.x-n.x)/2;else f=this.leftEnd&&t?d(this.chart,j,[{x:j.x,y:j.y+x/2},{x:j.x+(j.x-n.x)/2,y:j.y+x/2},{x:j.x+(j.x-n.x)/2,y:n.y-x/2},{x:n.x,y:n.y-x/2},{x:n.x,y:n.y}],b):d(this.chart,j,[{x:j.x,y:n.y-x/2},{x:n.x,y:n.y-x/2},{x:n.x,y:n.y}],b),this.bottomStart=!0,a.topEnd=!0,w=j.x+(j.x-n.x)/2;else f=d(this.chart,i,[{x:i.x+x/2,y:i.y},{x:i.x+x/2,y:n.y-x/2},{x:n.x,y:n.y-x/2},{x:n.x,y:n.y}],b),this.rightStart=!0,a.topEnd=!0,w=i.x+x/2;else f=d(this.chart,i,[{x:i.x+x/2,y:i.y},{x:i.x+x/2,y:n.y-x/2},{x:n.x,y:n.y-x/2},{x:n.x,y:n.y}],b),this.rightStart=!0,a.topEnd=!0,w=i.x+x/2;else f=d(this.chart,k,o,b),this.leftStart=!0,a.rightEnd=!0,w=o.x;else f=d(this.chart,i,p,b),this.rightStart=!0,a.leftEnd=!0,w=p.x;else f=d(this.chart,j,n,b),this.bottomStart=!0,a.topEnd=!0,w=j.x;if(f){for(var A=0,B=this.chart.lines.length;B>A;A++)for(var C,D=this.chart.lines[A],E=D.attr("path"),F=f.attr("path"),G=0,H=E.length-1;H>G;G++){var I=[];I.push(["M",E[G][1],E[G][2]]),I.push(["L",E[G+1][1],E[G+1][2]]);for(var J=I[0][1],K=I[0][2],L=I[1][1],M=I[1][2],N=0,O=F.length-1;O>N;N++){var P=[];P.push(["M",F[N][1],F[N][2]]),P.push(["L",F[N+1][1],F[N+1][2]]);var Q=P[0][1],R=P[0][2],S=P[1][1],T=P[1][2],U=e(J,K,L,M,Q,R,S,T);if(U.onLine1&&U.onLine2){var V;R===T?Q>S?(V=["L",U.x+2*y,R],F.splice(N+1,0,V),V=["C",U.x+2*y,R,U.x,R-4*y,U.x-2*y,R],F.splice(N+2,0,V),f.attr("path",F)):(V=["L",U.x-2*y,R],F.splice(N+1,0,V),V=["C",U.x-2*y,R,U.x,R-4*y,U.x+2*y,R],F.splice(N+2,0,V),f.attr("path",F)):R>T?(V=["L",Q,U.y+2*y],F.splice(N+1,0,V),V=["C",Q,U.y+2*y,Q+4*y,U.y,Q,U.y-2*y],F.splice(N+2,0,V),f.attr("path",F)):(V=["L",Q,U.y-2*y],F.splice(N+1,0,V),V=["C",Q,U.y-2*y,Q+4*y,U.y,Q,U.y+2*y],F.splice(N+2,0,V),f.attr("path",F)),N+=2,C+=2}}}this.chart.lines.push(f)}(!this.chart.maxXFromLine||this.chart.maxXFromLine&&w>this.chart.maxXFromLine)&&(this.chart.maxXFromLine=w)},r.inherits(h,g),r.inherits(i,g),r.inherits(j,g),r.inherits(k,g),r.inherits(l,g),l.prototype.getLeft=function(){var a=this.getY()+this.group.getBBox().height/2,b=this.getX()+this.textMargin;return{x:b,y:a}},l.prototype.getRight=function(){var a=this.getY()+this.group.getBBox().height/2,b=this.getX()+this.group.getBBox().width-this.textMargin;return{x:b,y:a}},r.inherits(m,g),m.prototype.render=function(){this.yes_direction&&(this[this.yes_direction+"_symbol"]=this.yes_symbol),this.no_direction&&(this[this.no_direction+"_symbol"]=this.no_symbol);var a=this.getAttr("line-length");if(this.bottom_symbol){var b=this.getBottom();this.bottom_symbol.getTop(),this.bottom_symbol.isPositioned||(this.bottom_symbol.shiftY(this.getY()+this.height+a),this.bottom_symbol.setX(b.x-this.bottom_symbol.width/2),this.bottom_symbol.isPositioned=!0,this.bottom_symbol.render())}if(this.right_symbol){var c=this.getRight();if(this.right_symbol.getLeft(),!this.right_symbol.isPositioned){this.right_symbol.setY(c.y-this.right_symbol.height/2),this.right_symbol.shiftX(this.group.getBBox().x+this.width+a);var d=this;!function e(){for(var b,c=!1,f=0,g=d.chart.symbols.length;g>f;f++){b=d.chart.symbols[f];var h=Math.abs(b.getCenter().x-d.right_symbol.getCenter().x);if(b.getCenter().y>d.right_symbol.getCenter().y&&h<=d.right_symbol.width/2){c=!0;break}}c&&(d.right_symbol.setX(b.getX()+b.width+a),e())}(),this.right_symbol.isPositioned=!0,this.right_symbol.render()}}},m.prototype.renderLines=function(){this.yes_symbol&&this.drawLineTo(this.yes_symbol,this.getAttr("yes-text"),this.yes_direction),this.no_symbol&&this.drawLineTo(this.no_symbol,this.getAttr("no-text"),this.no_direction)},p.parse=n}();
+</script>
+<script type="text/javascript">
+(function (win, doc) {
+  function onReady(fn) {
+    if (doc.addEventListener) {
+      doc.addEventListener('DOMContentLoaded', fn);
+    } else {
+      doc.attachEvent('onreadystatechange', function() {
+        if (doc.readyState === 'interactive')
+          fn();
+      });
+    }
+  }
+
+  win.convertUML = function(className, converter, settings) {
+    var charts = doc.querySelectorAll("pre." + className),
+        arr = [],
+        i, j, maxItem, diagaram, text, curNode;
+
+    // Is there a settings object?
+    if (settings === void 0) {
+        settings = {};
+    }
+
+    // Make sure we are dealing with an array
+    for(i = 0, maxItem = charts.length; i < maxItem; i++) arr.push(charts[i])
+
+    // Find the UML source element and get the text
+    for (i = 0, maxItem = arr.length; i < maxItem; i++) {
+        childEl = arr[i].firstChild;
+        parentEl = childEl.parentNode;
+        text = "";
+        for (j = 0; j < childEl.childNodes.length; j++) {
+            curNode = childEl.childNodes[j];
+            whitespace = /^\s*$/;
+            if (curNode.nodeName === "#text" && !(whitespace.test(curNode.nodeValue))) {
+                text = curNode.nodeValue;
+                break;
+            }
+        }
+
+        // Do UML conversion and replace source
+        el = doc.createElement('div');
+        el.className = className;
+        parentEl.parentNode.insertBefore(el, parentEl);
+        parentEl.parentNode.removeChild(parentEl);
+        diagram = converter.parse(text);
+        diagram.drawSVG(el, settings);
+    }
+  }
+
+  onReady(function(){convertUML('uml-flowchart', flowchart);});
+  onReady(function(){convertUML('uml-sequence-diagram', Diagram, {theme: 'simple'});});
+})(window, document)
+</script>
+<title>Python</title></head><body><article class="markdown-body"><h1 id="python"><a name="user-content-python" href="#python" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Python非典型教程</h1>
+<table>
+<thead>
+<tr>
+<th>作者</th>
+<th>Coldwings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开始日期</td>
+<td>2015.03.11</td>
+</tr>
+<tr>
+<td>完成日期</td>
+<td>鬼知道</td>
+</tr>
+<tr>
+<td>Email</td>
+<td><a href="mailto:coldwings@me.com">coldwings@me.com</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>目录</h1>
+<div class="toc">
+<ul>
+<li><a href="#python">Python非典型教程</a></li>
+<li><a href="#_1">目录</a></li>
+<li><a href="#duang">一、Duang的一下开始了！</a><ul>
+<li><a href="#11">1.1 为什么有这个教程？</a></li>
+<li><a href="#12">1.2 这个教程到底会讲些什么?</a></li>
+<li><a href="#13">1.3 所以这个教程就是用来入门的？</a></li>
+</ul>
+</li>
+<li><a href="#python_1">二、Python，出击！</a><ul>
+<li><a href="#21-pythonpython">2.1 Python界持续了不知道多少年的问题：选用哪个版本的Python？</a><ul>
+<li><a href="#211-3x">2.1.1 为什么暂时不用3.x？</a></li>
+<li><a href="#212-3x">2.1.2 迁移到3.x麻烦么？</a></li>
+</ul>
+</li>
+<li><a href="#22-python">2.2 然后我就去官网下载个Python开始玩？</a></li>
+<li><a href="#23">2.3 那开发环境呢？</a></li>
+</ul>
+</li>
+<li><a href="#_2">三、那么……试试看？</a><ul>
+<li><a href="#31-hello-world">3.1 第一个程序——咱能不玩&rdquo;Hello, world!&rdquo;么&hellip;</a><ul>
+<li><a href="#311-print">3.1.1 这里的print是什么？</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_3">四、教练说，要系统化地学习……</a><ul>
+<li><a href="#41-python">4.1 Python的程序运行顺序是怎样的？</a></li>
+<li><a href="#42">4.2 另外，缩进很重要！</a></li>
+</ul>
+</li>
+<li><a href="#_4">五、先不管那些，我总得能有输入输出对吧？你说对吧？</a><ul>
+<li><a href="#51">5.1 先说输出，因为很重要，所以再说一次。</a><ul>
+<li><a href="#511">5.1.1 咦？只是字符串？</a></li>
+<li><a href="#512">5.1.2 不对啊，不是说只能是字符串么？怎么数字也行呢？</a></li>
+<li><a href="#513-print">5.1.3 好像每个print语句输出完都自动换行，不想换行怎么办？</a></li>
+<li><a href="#514-ccjavapython">5.1.4 我学过c/c++/java，它们都有格式化输出，在Python里怎么办？</a></li>
+</ul>
+</li>
+<li><a href="#52">5.2 然后是输入了吧？</a><ul>
+<li><a href="#521">5.2.1 关于输入的一致性——还是字符串</a></li>
+<li><a href="#522">5.2.2 如果我输入的是数字什么的，它怎么处理？</a></li>
+<li><a href="#523">5.2.3 可是我就是要数字~数字嘛~~</a></li>
+<li><a href="#524-prompt">5.2.4 好吧，说了这么多，那个prompt到底是什么？</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_5">六、“变量”与“赋值”</a><ul>
+<li><a href="#61">6.1 变量——谁是啥</a></li>
+<li><a href="#62">6.2 赋值——我要让谁是啥谁就是啥</a><ul>
+<li><a href="#621">6.2.1 对于初学者</a></li>
+<li><a href="#622">6.2.2 对于有编程基础的读者</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_6">七、开始基本流程</a><ul>
+<li><a href="#71">7.1 先是判断——以追妹子为例</a></li>
+<li><a href="#72">7.2 然后是循环——还是那个妹子</a></li>
+<li><a href="#73">7.3 又是那个非常重要的点：缩进</a></li>
+<li><a href="#74">7.4 一点点附加说明</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="duang"><a name="user-content-duang" href="#duang" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>一、Duang的一下开始了！</h1>
+<h2 id="11"><a name="user-content-11" href="#11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.1 为什么有这个教程？</h2>
+<p>其实一开始要写这个教程我是拒绝的，因为我不是什么高端选手，用Python用的也不是很全面（基本上就做做科学计算，Django写写网页后台微信公众号，偶尔PyQt做点东西玩玩），这样的人写教程是妥妥被喷的死去活来的。但是人家说可以写个最最简单的给新手入门的教程，人家一看，Duang的一下，笑着看完了能拿来写个两三行代码，也挺好啊。这么一说好有道理，我完全无力反驳呢……</p>
+<p>仔细想想，Python这个东西关键字这么少，大多数功能其实都是五花八门的模块提供的，这样一来它其实真的很简单呢。</p>
+<div class="codehilite"><pre><span class="c">#!coding=utf8</span>
+<span class="kn">import</span> <span class="nn">keyword</span>
+<span class="k">print</span><span class="p">(</span><span class="s">u&#39;总共有</span><span class="si">%d</span><span class="s">个关键字&#39;</span><span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
+</pre></div>
 
 
-@font-face { font-family: Ubuntu; font-style: normal; font-weight: normal; src: local(Ubuntu Regular), local(Ubuntu-Regular), url(file:///Users/coldwings/Library/Application%20Support/abnerworks.Typora/themes/gothic/Ubuntu-Regular.ttf); }
-@font-face { font-family: Ubuntu; font-style: normal; font-weight: bold; src: local(Ubuntu Bold), local(Ubuntu-Bold), url(file:///Users/coldwings/Library/Application%20Support/abnerworks.Typora/themes/gothic/Ubuntu-Bold.ttf); }
-@font-face { font-family: Ubuntu; font-style: italic; font-weight: normal; src: local(Ubuntu Italic), local(Ubuntu-Italic), url(file:///Users/coldwings/Library/Application%20Support/abnerworks.Typora/themes/gothic/Ubuntu-Italic.ttf); }
-@font-face { font-family: Ubuntu; font-style: italic; font-weight: bold; src: local(Ubuntu BoldItalic), local(Ubuntu-BoldItalic), url(file:///Users/coldwings/Library/Application%20Support/abnerworks.Typora/themes/gothic/Ubuntu-BoldItalic.ttf); }
-@font-face { font-family: Raleway; font-style: normal; font-weight: 400; src: local(Raleway), local(Raleway-Regular), url(file:///Users/coldwings/Library/Application%20Support/abnerworks.Typora/themes/gothic/Raleway-Regular.ttf); }
-@font-face { font-family: Raleway; font-style: normal; font-weight: bold; src: local(Raleway SemiBold), local(Raleway-SemiBold), url(file:///Users/coldwings/Library/Application%20Support/abnerworks.Typora/themes/gothic/Raleway-SemiBold.ttf); }
-html, body, #write { background-color: rgb(252, 252, 252); font-family: 'Century Gothic', Raleway, STHeiti, sans-serif; font-weight: 400; background-position: initial initial; background-repeat: initial initial; }
-h1, h2, h3, h4, h5, h6 { color: rgb(17, 17, 17); font-family: 'Century Gothic', Ubuntu, STHeiti, sans-serif; }
-html { font-size: 16px; }
-#write { padding-top: 20px; }
-#write > h1:first-child { margin-top: 2.75rem; }
-#write > h2:first-child { margin-top: 1.75rem; }
-#write > h3:first-child { margin-top: 1rem; }
-#write > h4:first-child { margin-top: 0.5rem; }
-h1 { font-weight: normal; line-height: 4rem; margin: 4rem 0px 1.75rem; padding: 20px 30px; text-align: center; text-transform: uppercase; }
-h2 { font-weight: normal; line-height: 3rem; margin: 3rem 0px 1.9375rem; padding: 0px 30px; text-align: center; text-transform: uppercase; }
-h3 { font-weight: normal; }
-h4 { font-weight: normal; }
-h5 { font-size: 1.125rem; font-weight: normal; }
-h6 { font-size: 1rem; font-weight: bold; }
-p { color: rgb(17, 17, 17); font-size: 1rem; line-height: 1.75rem; margin: 0px 0px 1.25rem; }
-#write > h3.md-focus::before { left: -1.875rem; top: 0.5rem; padding: 2px; }
-#write > h4.md-focus::before { left: -1.875rem; top: 0.3125rem; padding: 2px; }
-#write > h5.md-focus::before { left: -1.875rem; top: 0.25rem; padding: 2px; }
-#write > h6.md-focus::before { left: -1.875rem; top: 0.125rem; padding: 2px; }
-@media screen and (min-width: 48em) { 
-  .h1, h1 { font-size: 3.25rem; }
-  .h2, h2 { font-size: 2.298rem; }
-  .h3, h3 { font-size: 1.625rem; }
-  .h4, h4 { font-size: 1.25rem; }
-  .h5, h5 { font-size: 1.15rem; }
-  .h6, h6 { font-size: 1rem; }
-  #write > h4.md-focus::before, #write > h5.md-focus::before, #write > h6.md-focus::before { top: 1px; }
-  p { font-size: 1.25rem; line-height: 1.8; }
-  table { font-size: 1.25rem; }
-}
-@media screen and (max-width: 48em) { 
-  blockquote { margin-left: 1rem; margin-right: 0px; padding: 0.5em; }
-  .h1, h1 { font-size: 2.827rem; }
-  .h2, h2 { font-size: 1.999rem; }
-  .h3, h3 { font-size: 1.413rem; }
-  .h4, h4 { font-size: 1.25rem; }
-  .h5, h5 { font-size: 1.15rem; }
-  .h6, h6 { font-size: 1rem; }
-}
-a, .md-def-url { color: rgb(153, 0, 0); text-decoration: none; }
-a:hover { text-decoration: underline; }
-table { margin-bottom: 20px; }
-table th, table td { padding: 8px; line-height: 1.25rem; vertical-align: top; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(221, 221, 221); }
-table th { font-weight: bold; }
-table thead th { vertical-align: bottom; }
-table caption + thead tr:first-child th, table caption + thead tr:first-child td, table colgroup + thead tr:first-child th, table colgroup + thead tr:first-child td, table thead:first-child tr:first-child th, table thead:first-child tr:first-child td { border-top-width: 0px; }
-table tbody + tbody { border-top-width: 2px; border-top-style: solid; border-top-color: rgb(221, 221, 221); }
-code, pre.md-fences, .md-fences { border: 1px solid rgb(204, 204, 204); padding: 0.1em; font-size: 0.9em; margin-left: 0.2em; margin-right: 0.2em; }
-pre.md-fences { margin: 0px 0px 20px; font-size: 1em; padding: 0.4em 1em 0.3em; }
-.task-list { padding-left: 0px; }
-.task-list-item { padding-left: 2.125rem; }
-.task-list-item input { top: 3px; }
-.task-list-item input::before { content: ''; display: inline-block; width: 1rem; height: 1rem; vertical-align: middle; text-align: center; border: 1px solid gray; background-color: rgb(253, 253, 253); margin-left: 0px; margin-top: -0.5rem; }
-.task-list-item input:checked::before, .task-list-item input[checked]::before { content: '◼'; font-size: 0.8125rem; line-height: 0.9375rem; }
-blockquote { margin: 0px 0px 1.11111rem; padding: 0.5rem 1.11111rem 0px 1.05556rem; border-left-width: 1px; border-left-style: solid; border-left-color: gray; }
-blockquote, blockquote p { line-height: 1.6; color: rgb(111, 111, 111); }
-#write pre.md-meta-block { min-height: 30px; background-color: rgb(248, 248, 248); padding: 1.5em; font-size: 1em; margin: -40px -1000px 2em; color: rgb(153, 153, 153); border-left-width: 1000px; border-left-color: rgb(248, 248, 248); border-left-style: solid; border-right-width: 1000px; border-right-color: rgb(248, 248, 248); border-right-style: solid; background-position: initial initial; background-repeat: initial initial; }
-.MathJax_Display { font-size: 0.9em; margin-top: 0.5em; margin-bottom: 0px; }
-p.mathjax-block, .mathjax-block { padding-bottom: 0px; }
-.mathjax-block > .code-tooltip { bottom: 5px; box-shadow: none; }
-.md-image > .md-meta { padding-left: 0.5em; padding-right: 0.5em; }
-.md-image > img { margin-top: 2px; }
-.md-image > .md-meta:first-of-type::before { padding-left: 4px; }
+<div class="codehilite"><pre>总共有31个关键字
+[&#39;and&#39;, &#39;as&#39;, &#39;assert&#39;, &#39;break&#39;, &#39;class&#39;, &#39;continue&#39;, &#39;def&#39;, &#39;del&#39;, &#39;elif&#39;, &#39;else&#39;, &#39;except&#39;, &#39;exec&#39;, &#39;finally&#39;, &#39;for&#39;, &#39;from&#39;, &#39;global&#39;, &#39;if&#39;, &#39;import&#39;, &#39;in&#39;, &#39;is&#39;, &#39;lambda&#39;, &#39;not&#39;, &#39;or&#39;, &#39;pass&#39;, &#39;print&#39;, &#39;raise&#39;, &#39;return&#39;, &#39;try&#39;, &#39;while&#39;, &#39;with&#39;, &#39;yield&#39;]
+</pre></div>
 
 
-</style>
-</head>
-<body class='typora-export' >
-<div  id='write'><h1 ><a name='header-c1' class='md-header-anchor'></a>Python非典型教程</h1><table><thead><tr><th style='text-align:left;' >作者</th><th style='text-align:right;' >Coldwings</th></tr></thead><tbody><tr><td style='text-align:left;' >开始日期</td><td style='text-align:right;' >2015.03.11</td></tr><tr><td style='text-align:left;' >完成日期</td><td style='text-align:right;' >鬼知道  </td></tr><tr><td style='text-align:left;' >Email</td><td style='text-align:right;' ><a href='mailto://coldwings@me.com' target='_blank' >coldwings@me.com</a></td></tr></tbody></table><h1 ><a name='header-c19' class='md-header-anchor'></a>目录</h1><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="c1"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c1">Python非典型教程</a></span><span class="md-toc-item md-toc-h1" data-ref="c19"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c19">目录</a></span><span class="md-toc-item md-toc-h1" data-ref="c21"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c21">一、Duang的一下开始了！</a></span><span class="md-toc-item md-toc-h2" data-ref="c22"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c22">1.1 为什么有这个教程？</a></span><span class="md-toc-item md-toc-h2" data-ref="c28"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c28">1.2 这个教程到底会讲些什么?</a></span><span class="md-toc-item md-toc-h2" data-ref="c31"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c31">1.3 所以这个教程就是用来入门的？</a></span><span class="md-toc-item md-toc-h1" data-ref="c33"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c33">二、Python，出击！</a></span><span class="md-toc-item md-toc-h2" data-ref="c34"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c34">2.1 Python界持续了不知道多少年的问题：选用哪个版本的Python？</a></span><span class="md-toc-item md-toc-h3" data-ref="c36"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c36">2.1.1 为什么暂时不用3.x？</a></span><span class="md-toc-item md-toc-h3" data-ref="c38"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c38">2.1.2 迁移到3.x麻烦么？</a></span><span class="md-toc-item md-toc-h2" data-ref="c40"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c40">2.2 然后我就去官网下载个Python开始玩？</a></span><span class="md-toc-item md-toc-h2" data-ref="c64"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c64">2.3 那开发环境呢？</a></span><span class="md-toc-item md-toc-h1" data-ref="c83"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c83">三、那么……试试看？</a></span><span class="md-toc-item md-toc-h2" data-ref="c84"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c84">3.1 第一个程序——咱能不玩"Hello, world!"么...</a></span><span class="md-toc-item md-toc-h3" data-ref="c89"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c89">3.1.1 这里的print是什么？</a></span><span class="md-toc-item md-toc-h1" data-ref="c91"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c91">四、教练说，要系统化地学习……</a></span><span class="md-toc-item md-toc-h2" data-ref="c92"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c92">4.1 Python的程序运行顺序是怎样的？</a></span><span class="md-toc-item md-toc-h2" data-ref="c95"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c95">4.2 另外，缩进很重要！</a></span><span class="md-toc-item md-toc-h1" data-ref="c105"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c105">五、先不管那些，我总得能有输入输出对吧？你说对吧？</a></span><span class="md-toc-item md-toc-h2" data-ref="c106"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c106">5.1 先说输出，因为很重要，所以再说一次。</a></span><span class="md-toc-item md-toc-h3" data-ref="c112"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c112">5.1.1 咦？只是字符串？</a></span><span class="md-toc-item md-toc-h3" data-ref="c116"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c116">5.1.2 不对啊，不是说只能是字符串么？怎么数字也行呢？</a></span><span class="md-toc-item md-toc-h3" data-ref="c120"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c120">5.1.3 好像每个print语句输出完都自动换行，不想换行怎么办？</a></span><span class="md-toc-item md-toc-h3" data-ref="c130"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c130">5.1.4 我学过c/c++/java，它们都有格式化输出，在Python里怎么办？</a></span><span class="md-toc-item md-toc-h2" data-ref="c139"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c139">5.2 然后是输入了吧？</a></span><span class="md-toc-item md-toc-h3" data-ref="c141"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c141">5.2.1 关于输入的一致性——还是字符串</a></span><span class="md-toc-item md-toc-h3" data-ref="c145"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c145">5.2.2 如果我输入的是数字什么的，它怎么处理？</a></span><span class="md-toc-item md-toc-h3" data-ref="c164"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c164">5.2.3 可是我就是要数字~数字嘛~~</a></span><span class="md-toc-item md-toc-h3" data-ref="c188"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c188">5.2.4 好吧，说了这么多，那个prompt到底是什么？</a></span><span class="md-toc-item md-toc-h1" data-ref="c196"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c196">六、“变量”与“赋值”</a></span><span class="md-toc-item md-toc-h2" data-ref="c198"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c198">6.1 变量——谁是啥</a></span><span class="md-toc-item md-toc-h2" data-ref="c207"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c207">6.2 赋值——我要让谁是啥谁就是啥</a></span><span class="md-toc-item md-toc-h3" data-ref="c208"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c208">6.2.1 对于初学者</a></span><span class="md-toc-item md-toc-h3" data-ref="c212"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c212">6.2.2 对于有编程基础的读者</a></span><span class="md-toc-item md-toc-h1" data-ref="c217"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c217">七、开始基本流程</a></span><span class="md-toc-item md-toc-h2" data-ref="c219"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c219">7.1 先是判断——以追妹子为例</a></span><span class="md-toc-item md-toc-h2" data-ref="c231"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c231">7.2 然后是循环——还是那个妹子</a></span><span class="md-toc-item md-toc-h2" data-ref="c254"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c254">7.3 又是那个非常重要的点：缩进</a></span><span class="md-toc-item md-toc-h2" data-ref="c266"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c266">7.4 一点点附加说明</a></span></p></div><h1 ><a name='header-c21' class='md-header-anchor'></a>一、Duang的一下开始了！</h1><h2 ><a name='header-c22' class='md-header-anchor'></a>1.1 为什么有这个教程？</h2><p>其实一开始要写这个教程我是拒绝的，因为我不是什么高端选手，用Python用的也不是很全面（基本上就做做科学计算，Django写写网页后台微信公众号，偶尔PyQt做点东西玩玩），这样的人写教程是妥妥被喷的死去活来的。但是人家说可以写个最最简单的给新手入门的教程，人家一看，Duang的一下，笑着看完了能拿来写个两三行代码，也挺好啊。这么一说好有道理，我完全无力反驳呢……</p><p>仔细想想，Python这个东西关键字这么少，大多数功能其实都是五花八门的模块提供的，这样一来它其实真的很简单呢。</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap     "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 134.421875px; top: 22px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment">#!coding=utf8</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">keyword</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span>(<span class="cm-string">u'总共有%d个关键字'</span><span class="cm-operator">%</span><span class="cm-builtin">len</span>(<span class="cm-variable">keyword</span>.<span class="cm-variable">kwlist</span>))</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span>(<span class="cm-variable">keyword</span>.<span class="cm-variable">kwlist</span>)</span></pre></div></div></div></div></div></div></div></pre><pre class='md-fences mock-cm' style='display:block;position:relative'>总共有31个关键字
-[&#39;and&#39;, &#39;as&#39;, &#39;assert&#39;, &#39;break&#39;, &#39;class&#39;, &#39;continue&#39;, &#39;def&#39;, &#39;del&#39;, &#39;elif&#39;, &#39;else&#39;, &#39;except&#39;, &#39;exec&#39;, &#39;finally&#39;, &#39;for&#39;, &#39;from&#39;, &#39;global&#39;, &#39;if&#39;, &#39;import&#39;, &#39;in&#39;, &#39;is&#39;, &#39;lambda&#39;, &#39;not&#39;, &#39;or&#39;, &#39;pass&#39;, &#39;print&#39;, &#39;raise&#39;, &#39;return&#39;, &#39;try&#39;, &#39;while&#39;, &#39;with&#39;, &#39;yield&#39;]</pre><p>才31个关键字，确实跟特技一般呢！</p><h2 ><a name='header-c28' class='md-header-anchor'></a>1.2 这个教程到底会讲些什么?</h2><p>首先说明：这不会是一个大而全的教程。如果你是一个完全的新手，看完教程不可能瞬间就能架出一个web app，也不会看完就能写个激光传输仿真，估计还不太可能上手pia敲出一个带图形界面的程序。这个教程只是个纯粹的Python入门教程，需要说明的只是这个语言的特性，至于上述说的那些工作，需要在看完本文之后再仔细学习各种模块，研究算法，理解要用的UI库的使用方法等等等等。</p><p>这位客官先别急着走啊！要知道这里讲究的是基础的基础，但凡没学过Python的看看都会多少有点用处的东西。我的目标是：学完这玩意，理解基础用法，然后你就可以去看各个模块的Wiki研究自己的程序应该怎样在Python上开始了。</p><h2 ><a name='header-c31' class='md-header-anchor'></a>1.3 所以这个教程就是用来入门的？</h2><p>非常正确，就是个入门教程。当然你也可以把它当成段子手的小玩笑。</p><h1 ><a name='header-c33' class='md-header-anchor'></a>二、Python，出击！</h1><h2 ><a name='header-c34' class='md-header-anchor'></a>2.1 Python界持续了不知道多少年的问题：选用哪个版本的Python？</h2><p>先说本教程，现在用的是Python 2.7.9。其实这个问题真的不太重要，3.x的Python更加标准化，可以说更加优雅，而且通过强制utf8之类的手段在解释器层面上统一了字符编码问题，乃是拯救人生的神器。</p><h3 ><a name='header-c36' class='md-header-anchor'></a>2.1.1 为什么暂时不用3.x？</h3><p>因为模块……这么多年了居然还有大量的模块没改过来支持3.x。2.7.x已经在很多方面靠近3.x了，大多数3.x的程序可以直接甩到2.7.x上跑，反过来倒是不一定……另外在网上能找到的大多数代码都还是2.x的，方便找资料偷懒嘛。</p><h3 ><a name='header-c38' class='md-header-anchor'></a>2.1.2 迁移到3.x麻烦么？</h3><p>2.x是不断向3.x发展的，两者的差异已经越来越小。对于本教程里的内容而言，似乎最大的差异只在于print在2.x里是关键字，而在3.x中已经是一个函数了。所以说迁移只是分分钟的事，一旦你学会了Python，无论2.x还是3.x，相互变换都没啥问题。</p><h2 ><a name='header-c40' class='md-header-anchor'></a>2.2 然后我就去官网下载个Python开始玩？</h2><p>完全可以。对于Linux/Mac用户而言更加简单，反正要什么包随时pip都行，没有什么困难的事情。对于Windows用户稍微麻烦一点，但也只是一点点而已。不过如果你跟我一样懒，那么向你推荐直接安装各种发行版，如：</p><table><thead><tr><th style='text-align:center;' >名称</th><th style='text-align:center;' >Win</th><th style='text-align:center;' >Mac</th><th style='text-align:left;' >网址</th></tr></thead><tbody><tr><td style='text-align:center;' >Anaconda</td><td style='text-align:center;' >yes</td><td style='text-align:center;' >yes</td><td style='text-align:left;' ><a href='http://continuum.io' target='_blank' >http://continuum.io</a></td></tr><tr><td style='text-align:center;' >EPD</td><td style='text-align:center;' >yes</td><td style='text-align:center;' >yes</td><td style='text-align:left;' ><a href='https://www.enthought.com' target='_blank' >https://www.enthought.com</a></td></tr><tr><td style='text-align:center;' >WinPython</td><td style='text-align:center;' >yes</td><td style='text-align:center;' >no</td><td style='text-align:left;' ><a href='http://winpython.sourceforge.net' target='_blank' >http://winpython.sourceforge.net</a></td></tr></tbody></table><p>当然其实还有很多选择。列出这几项只不过是因为我都用过而已。它们一般都带个还不错的包管理（尽管已经有了pip），有大量的预编译好的模块和软件可用，方便得无与伦比。</p><h2 ><a name='header-c64' class='md-header-anchor'></a>2.3 那开发环境呢？</h2><p>学习的话，一般都自带一个IDLE，很简单但是也很有效。除此之外，新手还非常推荐Spyder，这是个长相巨丑但是能即时显示文档的IDE，不记得模块怎么用之类的问题，它能随时给与提示。当然，万众公认的神器PyCharm这种全功能IDE显然不能放过。</p><p>如果不太喜欢IDE，喜欢轻量级一点的东西，选择就更多了，比如两大党Vim和Emacs，又比如Sublime Text和Textmate，再比如让人说不出好坏的SciTE。其实选择怎样的编辑器一点都不重要，重要的是写代码不是么？</p><p>我常用的工具包括：</p><ul><li>PyCharm</li></ul><p><img src='img/2/2.1.png' alt='PyCharm' /></p><p>完整的IDE，包含图形化的包管理、版本控制、多语言高亮等等功能，强大而丰富，用它配合Django做webapp特别愉快。</p><ul><li>Sublime Text</li></ul><p><img src='img/2/2.2.png' alt='Sublime Text' /></p><p>带有SVN、一大堆插件、界面友好、速度快的文本编辑器，最重要的是它自身就与Python紧密结合。</p><ul><li>IPython Notebook</li></ul><p><img src='img/2/2.3.png' alt='IPython Notebook' /></p><p>科学计算神器，本身是个web-app，通过IPython加载本地服务器，通过浏览器访问。在用Python写程序的同时用Markdown写文章，程序写完了，文档也出来了，论文也差不多完成了。与matplotlib结合紧密，特别适合做科学计算。</p><h1 ><a name='header-c83' class='md-header-anchor'></a>三、那么……试试看？</h1><h2 ><a name='header-c84' class='md-header-anchor'></a>3.1 第一个程序——咱能不玩&quot;Hello, world!&quot;么...</h2><p>必须的可以。我们可以尝试输出任何的内容，例如：</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-string">'Yoooo!'</span></span></pre></div></div></div></div></div></div></div></pre><pre class='md-fences mock-cm' style='display:block;position:relative'>Yoooo!</pre><p>嘛……是不是很简单？就是这样，Python作为一个解释型语言，完全可以没有所谓的文件头，没有所谓的入口函数，输出就是一句话而已。</p><h3 ><a name='header-c89' class='md-header-anchor'></a>3.1.1 这里的print是什么？</h3><p>如果你还记得前面的关键字列表，print就是其中之一。至于它的作用，就是把字符串输出到屏幕上。</p><h1 ><a name='header-c91' class='md-header-anchor'></a>四、教练说，要系统化地学习……</h1><h2 ><a name='header-c92' class='md-header-anchor'></a>4.1 Python的程序运行顺序是怎样的？</h2><p>前面说到Python是没有入口函数的，也就是没有C/C++里的<code>main()</code>，在Python里是不存在这货的——Python的基本执行逻辑就是从代码的第一行到最后一行依次执行。</p><p>你所写的程序对解释器而言就是一个简单的说明书，而解释器则是一个听话的小娃娃，会认真的一行行读说明，再严格遵照你的指示一步步完成你安排给它的事情。所以当程序出现问题的时候，记得不要生气，不要打孩子，仔细看看自己给的说明书是不是写错了才是重点——毕竟，小孩子其实一般都比较笨的说。</p><h2 ><a name='header-c95' class='md-header-anchor'></a>4.2 另外，缩进很重要！</h2><p>这里是全文第一处提到缩进的地方，以后或许不会重复太多次，但是请一定记住：对于Python而言，缩进很重要。基本上随便一个支持Python的编辑器/IDE都会有很完善的自动缩进功能，但不同于其它语言，Python没有诸如花括号或者begin-end之类的花样，缩进是唯一区分程序段的依据，因此要严格遵守以下缩进规则。</p><ol><li><strong>程序使用统一的缩进符号，不要混用空格和<code>tab</code>符号；</strong></li><li><strong>程序统一使用相同的缩进空格数，不要第一层缩进3个空格第二层4个；</strong></li><li><strong>不要给最外层的代码添加缩进。</strong></li></ol><p>看在这段话写得这么严肃的份上……请一定记住。</p><h1 ><a name='header-c105' class='md-header-anchor'></a>五、先不管那些，我总得能有输入输出对吧？你说对吧？</h1><h2 ><a name='header-c106' class='md-header-anchor'></a>5.1 先说输出，因为很重要，所以再说一次。</h2><p>前面已经提到了输出语句<code>print</code>，接下来进行稍微详细一点点的说明。</p><p>它的作用——把<strong>字符串</strong>输出到屏幕上。</p><p>在Python 3.x中，<code>print</code>已经不再是关键字而是一个函数，提供了更丰富的参数，用起来更清晰。但是由于机制不同，如果需要将代码迁移到3.x，需要作一些修改。</p><p>因为很重要，所以要说三次:</p><p><strong><em>它的作用——把字符串输出到屏幕上。</em></strong></p><h3 ><a name='header-c112' class='md-header-anchor'></a>5.1.1 咦？只是字符串？</h3><p>是的，确实只是字符串。当我们需要输出的类型并不是字符串时，它会自动转换成字符串，比如</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">answer</span>=<span class="cm-number">42</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-variable">answer</span></span></pre></div></div></div></div></div></div></div></pre><pre class='md-fences mock-cm' style='display:block;position:relative'>42</pre><h3 ><a name='header-c116' class='md-header-anchor'></a>5.1.2 不对啊，不是说只能是字符串么？怎么数字也行呢？</h3><p>这就涉及到Python的第一个特性——完全对象化。在Python中，<strong>生命、宇宙和一切都是对象实例</strong>，数字也不例外。当使用<code>print</code>输出它们的时候，会先用str函数将其转换成字符串，而实际上会调用这个对象的一个成员函数<code>__str__()</code>，它将返回一个字符串。也就是说上述程序的实质是</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap   "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">answer</span>=<span class="cm-number">42</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-builtin">str</span>(<span class="cm-variable">answer</span>)</span></pre></div></div></div></div></div></div></div></pre><pre class='md-fences mock-cm' style='display:block;position:relative'>42</pre><h3 ><a name='header-c120' class='md-header-anchor'></a>5.1.3 好像每个print语句输出完都自动换行，不想换行怎么办？</h3><p>这位同学你观察得好仔细！对于每个<code>print</code>语句，默认情况下会在末尾自动加上一个换行符。所以这样的程序</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-string">'love'</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-string">'you'</span></span></pre></div></div></div></div></div></div></div></pre><p>它的输出结果将会是</p><pre class='md-fences mock-cm' style='display:block;position:relative'>love
-you</pre><p>对于Python 2.x，要让它不换行，解决方案是在<code>print</code>语句后加个逗号，例如</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap  "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 105.609375px; top: 22px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-string">'love'</span>,</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-string">'you'</span></span></pre></div></div></div></div></div></div></div></pre><pre class='md-fences mock-cm' style='display:block;position:relative'>love you</pre><p>不爽的是，输出内容会用一个空格分开。</p><p>在Python 3.x中这个办法行不通，因为<code>print</code>已经成为了个函数，加逗号反正是不行的了。正确的姿势应当是指定<code>print()</code>的参数，包含多参量分隔符<code>sep</code>和输出末尾添加内容<code>end</code>。上述就应该写成<code>print(&#39;love&#39;, end=&#39; &#39;)</code>以实现不换行。这毫无疑问是个很优秀的改进，但在此处不多做讨论，我们还是以2.7版本为主。</p><h3 ><a name='header-c130' class='md-header-anchor'></a>5.1.4 我学过c/c++/java，它们都有格式化输出，在Python里怎么办？</h3><p>没有相关语言基础的人可能会看不懂下面这一段内容，但是请完全不要在意。这一点都不会影响你的学习进程。</p><p>在Python并不存在“格式化输出”，但是格式化字符串是确实存在的——任意字符串对象都有一个<code>%</code>运算符，它的作用就是将原串中的格式化文本变量带入，如：</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">everything</span>=<span class="cm-string">'everythin'</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">answer</span>=<span class="cm-number">42</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">explain</span>=<span class="cm-string">'The answer to life, the universe, and %s, is %d'</span><span class="cm-operator">%</span>(<span class="cm-variable">everything</span>, <span class="cm-variable">answer</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-variable">explain</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-string">'The answer to life, the universe, and %s, is %d'</span><span class="cm-operator">%</span>(<span class="cm-variable">everything</span>, <span class="cm-variable">answer</span>)</span></pre></div></div></div></div></div></div></div></pre><pre class='md-fences mock-cm' style='display:block;position:relative'>The answer to life, the universe, and everythin, is 42
-The answer to life, the universe, and everythin, is 42</pre><p>当然，Python还有更加Pythonic的格式化输出方式。之前提到Python中的输出都是对<code>__str__()</code>方法调用后得到的字符串的输出，因此可以理解为Python里面本不存在过多的变量类型。所以更具有Python风格的字符串格式处理是如下<code>format()</code>方法。</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22.484375px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-string">'Coordinates: {latitude}, {longitude}'</span>.<span class="cm-builtin">format</span>(<span class="cm-variable">latitude</span>=<span class="cm-string">'37.24N'</span>, <span class="cm-variable">longitude</span>=<span class="cm-string">'-115.81W'</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">c</span> = <span class="cm-number">3</span><span class="cm-operator">-</span><span class="cm-number">5j</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> (<span class="cm-string">'The complex number {0} is formed from the real part {0.real} and the imaginary part {0.imag}.'</span>).<span class="cm-builtin">format</span>(<span class="cm-variable">c</span>)</span></pre></div></div></div></div></div></div></div></pre><pre class='md-fences mock-cm' style='display:block;position:relative'>Coordinates: 37.24N, -115.81W
-The complex number (3-5j) is formed from the real part 3.0 and the imaginary part -5.0.</pre><p>可以看到这里并没有指定类型，但是都能够正常输出。对于熟悉C/C++的人而言，完全对象化将是需要一定时间适应才能跨过去的坎儿。</p><h2 ><a name='header-c139' class='md-header-anchor'></a>5.2 然后是输入了吧？</h2><p>输入有两个相关的基本函数。需要说明的是，输入<strong>不是语句</strong>，这一点与print不同。输入都是函数。关于函数的概念会在后文中说明，如果现在不明白也不要在意，记住怎么用就好。</p><h3 ><a name='header-c141' class='md-header-anchor'></a>5.2.1 关于输入的一致性——还是字符串</h3><p>基本输入函数是<code>raw_input([prompt])</code>，这里方括号括起来的<code>[prompt]</code>是按照Python文档的风格，表示非必须参数。也就是说可以直接写<code>raw_input()</code>，也可以写成<code>raw_input(&#39;Ahh&#39;)</code>。</p><p>它的作用是：读取用户输入的一行字符串。</p><p>基本作用类似于C语言里的<code>gets()</code>。反正就是执行这个函数时，程序会停下来，等用户输入点什么东西，输入完了按<code>Enter</code>回车键之后，程序会继续，并且把输入的这行内容以字符串的形式作为<code>raw_input()</code>的结果返回过来。</p><h3 ><a name='header-c145' class='md-header-anchor'></a>5.2.2 如果我输入的是数字什么的，它怎么处理？</h3><p>考虑下面这段程序：</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">x</span>=<span class="cm-builtin">raw_input</span>()</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-variable">x</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-builtin">type</span>(<span class="cm-variable">x</span>)</span></pre></div></div></div></div></div></div></div></pre><p>这其中<code>type(x)</code>的作用是输出x变量的类型。我们运行它，输入：</p><pre class='md-fences mock-cm' style='display:block;position:relative'>1314</pre><p>可以看到如下结果</p><pre class='md-fences mock-cm' style='display:block;position:relative'>1314
-&lt;type &#39;str&#39;&gt;</pre><p>看到了么？还是<code>str</code>类型，还是字符串。</p><p>结论是：<strong>不处理</strong></p><p>让我们看看raw这个英文单词的翻译：</p><blockquote><ul><li><p>raw</p><p>n. 痛处；生的食物；纯酒；粗糖</p><p>adj. 生的；未烹制的；未煮的；未经加工的</p><p>v. 使皮开肉绽</p><p>网络 未加工的；原始；未煮过的</p><p>它的结果就是原始输入数据。原始输入数据自然是键盘敲进去的字符串啦~</p></li></ul></blockquote><h3 ><a name='header-c164' class='md-header-anchor'></a>5.2.3 可是我就是要数字~数字嘛~~</h3><p>这就涉及到另一个输入函数了：<code>input([prompt])</code>。</p><p>它的作用是：将用户输入的内容当做是一个Python表达式交给解释器算一下，然后把结果作为返回值输出。动态语言的好处之一就体现出来了，不用编译，想算什么算什么，就是这么任性。</p><p>看看下面这个例子：</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap  "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">x</span>=<span class="cm-builtin">input</span>()</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-variable">x</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-builtin">type</span>(<span class="cm-variable">x</span>)</span></pre></div></div></div></div></div></div></div></pre><p>输入：</p><pre class='md-fences mock-cm' style='display:block;position:relative'>1314</pre><p>输出：</p><pre class='md-fences mock-cm' style='display:block;position:relative'>1314
-&lt;type &#39;int&#39;&gt;</pre><p>既然经过了解释器，输入的内容如果是个数字自然就解释成数字了。当然如果你想输入个<code>3*4</code>之类的，它会把计算结果存下来。</p><p>输入：</p><pre class='md-fences mock-cm' style='display:block;position:relative'>3*4</pre><p>输出：</p><pre class='md-fences mock-cm' style='display:block;position:relative'>12
-&lt;type &#39;int&#39;&gt;</pre><p>但是当你输入个字符串的时候，问题就出现了：对于解释器而言，字符串必须是用<code>&#39; &#39;</code>或者<code>&quot; &quot;</code>括起来的部分。而习惯上输入字符串是直接输入的，这样就会出错。</p><p>输入：</p><pre class='md-fences mock-cm' style='display:block;position:relative'>love</pre><p>输出：</p><pre class='md-fences mock-cm' style='display:block;position:relative'>Traceback (most recent call last):
+<p>才31个关键字，确实跟特技一般呢！</p>
+<h2 id="12"><a name="user-content-12" href="#12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2 这个教程到底会讲些什么?</h2>
+<p>首先说明：这不会是一个大而全的教程。如果你是一个完全的新手，看完教程不可能瞬间就能架出一个web app，也不会看完就能写个激光传输仿真，估计还不太可能上手pia敲出一个带图形界面的程序。这个教程只是个纯粹的Python入门教程，需要说明的只是这个语言的特性，至于上述说的那些工作，需要在看完本文之后再仔细学习各种模块，研究算法，理解要用的UI库的使用方法等等等等。</p>
+<p>这位客官先别急着走啊！要知道这里讲究的是基础的基础，但凡没学过Python的看看都会多少有点用处的东西。我的目标是：学完这玩意，理解基础用法，然后你就可以去看各个模块的Wiki研究自己的程序应该怎样在Python上开始了。</p>
+<h2 id="13"><a name="user-content-13" href="#13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.3 所以这个教程就是用来入门的？</h2>
+<p>非常正确，就是个入门教程。当然你也可以把它当成段子手的小玩笑。</p>
+<h1 id="python_1"><a name="user-content-python_1" href="#python_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>二、Python，出击！</h1>
+<h2 id="21-pythonpython"><a name="user-content-21-pythonpython" href="#21-pythonpython" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1 Python界持续了不知道多少年的问题：选用哪个版本的Python？</h2>
+<p>先说本教程，现在用的是Python 2.7.9。其实这个问题真的不太重要，3.x的Python更加标准化，可以说更加优雅，而且通过强制utf8之类的手段在解释器层面上统一了字符编码问题，乃是拯救人生的神器。</p>
+<h3 id="211-3x"><a name="user-content-211-3x" href="#211-3x" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.1 为什么暂时不用3.x？</h3>
+<p>因为模块……这么多年了居然还有大量的模块没改过来支持3.x。2.7.x已经在很多方面靠近3.x了，大多数3.x的程序可以直接甩到2.7.x上跑，反过来倒是不一定……另外在网上能找到的大多数代码都还是2.x的，方便找资料偷懒嘛。</p>
+<h3 id="212-3x"><a name="user-content-212-3x" href="#212-3x" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.2 迁移到3.x麻烦么？</h3>
+<p>2.x是不断向3.x发展的，两者的差异已经越来越小。对于本教程里的内容而言，似乎最大的差异只在于print在2.x里是关键字，而在3.x中已经是一个函数了。所以说迁移只是分分钟的事，一旦你学会了Python，无论2.x还是3.x，相互变换都没啥问题。</p>
+<h2 id="22-python"><a name="user-content-22-python" href="#22-python" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2 然后我就去官网下载个Python开始玩？</h2>
+<p>完全可以。对于Linux/Mac用户而言更加简单，反正要什么包随时pip都行，没有什么困难的事情。对于Windows用户稍微麻烦一点，但也只是一点点而已。不过如果你跟我一样懒，那么向你推荐直接安装各种发行版，如：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>Win</th>
+<th>Mac</th>
+<th>网址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anaconda</td>
+<td>yes</td>
+<td>yes</td>
+<td><a href="http://continuum.io">http://continuum.io</a></td>
+</tr>
+<tr>
+<td>EPD</td>
+<td>yes</td>
+<td>yes</td>
+<td><a href="https://www.enthought.com">https://www.enthought.com</a></td>
+</tr>
+<tr>
+<td>WinPython</td>
+<td>yes</td>
+<td>no</td>
+<td><a href="http://winpython.sourceforge.net">http://winpython.sourceforge.net</a></td>
+</tr>
+</tbody>
+</table>
+<p>当然其实还有很多选择。列出这几项只不过是因为我都用过而已。它们一般都带个还不错的包管理（尽管已经有了pip），有大量的预编译好的模块和软件可用，方便得无与伦比。</p>
+<h2 id="23"><a name="user-content-23" href="#23" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3 那开发环境呢？</h2>
+<p>学习的话，一般都自带一个IDLE，很简单但是也很有效。除此之外，新手还非常推荐Spyder，这是个长相巨丑但是能即时显示文档的IDE，不记得模块怎么用之类的问题，它能随时给与提示。当然，万众公认的神器PyCharm这种全功能IDE显然不能放过。</p>
+<p>如果不太喜欢IDE，喜欢轻量级一点的东西，选择就更多了，比如两大党Vim和Emacs，又比如Sublime Text和Textmate，再比如让人说不出好坏的SciTE。其实选择怎样的编辑器一点都不重要，重要的是写代码不是么？</p>
+<p>我常用的工具包括：</p>
+<ul>
+<li>PyCharm</li>
+</ul>
+<p><img alt="PyCharm" src="img/2/2.1.png" title="图2.1 PyCharm 4" /></p>
+<p>完整的IDE，包含图形化的包管理、版本控制、多语言高亮等等功能，强大而丰富，用它配合Django做webapp特别愉快。</p>
+<ul>
+<li>Sublime Text</li>
+</ul>
+<p><img alt="Sublime Text" src="img/2/2.2.png" title="图2.2 Sublime Text 3" /></p>
+<p>带有SVN、一大堆插件、界面友好、速度快的文本编辑器，最重要的是它自身就与Python紧密结合。</p>
+<ul>
+<li>IPython Notebook</li>
+</ul>
+<p><img alt="IPython Notebook" src="img/2/2.3.png" title="图2.3 IPython Notebook" /></p>
+<p>科学计算神器，本身是个web-app，通过IPython加载本地服务器，通过浏览器访问。在用Python写程序的同时用Markdown写文章，程序写完了，文档也出来了，论文也差不多完成了。与matplotlib结合紧密，特别适合做科学计算。</p>
+<h1 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>三、那么……试试看？</h1>
+<h2 id="31-hello-world"><a name="user-content-31-hello-world" href="#31-hello-world" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1 第一个程序——咱能不玩&rdquo;Hello, world!&rdquo;么&hellip;</h2>
+<p>必须的可以。我们可以尝试输出任何的内容，例如：</p>
+<div class="codehilite"><pre><span class="k">print</span> <span class="s">&#39;Yoooo!&#39;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>Yoooo!
+</pre></div>
+
+
+<p>嘛……是不是很简单？就是这样，Python作为一个解释型语言，完全可以没有所谓的文件头，没有所谓的入口函数，输出就是一句话而已。</p>
+<h3 id="311-print"><a name="user-content-311-print" href="#311-print" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.1 这里的print是什么？</h3>
+<p>如果你还记得前面的关键字列表，print就是其中之一。至于它的作用，就是把字符串输出到屏幕上。</p>
+<h1 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>四、教练说，要系统化地学习……</h1>
+<h2 id="41-python"><a name="user-content-41-python" href="#41-python" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.1 Python的程序运行顺序是怎样的？</h2>
+<p>前面说到Python是没有入口函数的，也就是没有C/C++里的<code>main()</code>，在Python里是不存在这货的——Python的基本执行逻辑就是从代码的第一行到最后一行依次执行。</p>
+<p>你所写的程序对解释器而言就是一个简单的说明书，而解释器则是一个听话的小娃娃，会认真的一行行读说明，再严格遵照你的指示一步步完成你安排给它的事情。所以当程序出现问题的时候，记得不要生气，不要打孩子，仔细看看自己给的说明书是不是写错了才是重点——毕竟，小孩子其实一般都比较笨的说。</p>
+<h2 id="42"><a name="user-content-42" href="#42" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.2 另外，缩进很重要！</h2>
+<p>这里是全文第一处提到缩进的地方，以后或许不会重复太多次，但是请一定记住：对于Python而言，缩进很重要。基本上随便一个支持Python的编辑器/IDE都会有很完善的自动缩进功能，但不同于其它语言，Python没有诸如花括号或者begin-end之类的花样，缩进是唯一区分程序段的依据，因此要严格遵守以下缩进规则。</p>
+<ol>
+<li><strong>程序使用统一的缩进符号，不要混用空格和<code>tab</code>符号；</strong></li>
+<li><strong>程序统一使用相同的缩进空格数，不要第一层缩进3个空格第二层4个；</strong></li>
+<li><strong>不要给最外层的代码添加缩进。</strong></li>
+</ol>
+<p>看在这段话写得这么严肃的份上……请一定记住。</p>
+<h1 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>五、先不管那些，我总得能有输入输出对吧？你说对吧？</h1>
+<h2 id="51"><a name="user-content-51" href="#51" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.1 先说输出，因为很重要，所以再说一次。</h2>
+<p>前面已经提到了输出语句<code>print</code>，接下来进行稍微详细一点点的说明。</p>
+<p>它的作用——把<strong>字符串</strong>输出到屏幕上。</p>
+<p>在Python 3.x中，<code>print</code>已经不再是关键字而是一个函数，提供了更丰富的参数，用起来更清晰。但是由于机制不同，如果需要将代码迁移到3.x，需要作一些修改。</p>
+<p>因为很重要，所以要说三次:</p>
+<p><strong><em>它的作用——把字符串输出到屏幕上。</em></strong></p>
+<h3 id="511"><a name="user-content-511" href="#511" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.1.1 咦？只是字符串？</h3>
+<p>是的，确实只是字符串。当我们需要输出的类型并不是字符串时，它会自动转换成字符串，比如</p>
+<div class="codehilite"><pre><span class="n">answer</span><span class="o">=</span><span class="mi">42</span>
+<span class="k">print</span> <span class="n">answer</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>42
+</pre></div>
+
+
+<h3 id="512"><a name="user-content-512" href="#512" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.1.2 不对啊，不是说只能是字符串么？怎么数字也行呢？</h3>
+<p>这就涉及到Python的第一个特性——完全对象化。在Python中，<strong>生命、宇宙和一切都是对象实例</strong>，数字也不例外。当使用<code>print</code>输出它们的时候，会先用str函数将其转换成字符串，而实际上会调用这个对象的一个成员函数<code>__str__()</code>，它将返回一个字符串。也就是说上述程序的实质是</p>
+<div class="codehilite"><pre><span class="n">answer</span><span class="o">=</span><span class="mi">42</span>
+<span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>42
+</pre></div>
+
+
+<h3 id="513-print"><a name="user-content-513-print" href="#513-print" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.1.3 好像每个print语句输出完都自动换行，不想换行怎么办？</h3>
+<p>这位同学你观察得好仔细！对于每个<code>print</code>语句，默认情况下会在末尾自动加上一个换行符。所以这样的程序</p>
+<div class="codehilite"><pre><span class="k">print</span> <span class="s">&#39;love&#39;</span>
+<span class="k">print</span> <span class="s">&#39;you&#39;</span>
+</pre></div>
+
+
+<p>它的输出结果将会是</p>
+<div class="codehilite"><pre>love
+you
+</pre></div>
+
+
+<p>对于Python 2.x，要让它不换行，解决方案是在<code>print</code>语句后加个逗号，例如</p>
+<div class="codehilite"><pre><span class="k">print</span> <span class="s">&#39;love&#39;</span><span class="p">,</span>
+<span class="k">print</span> <span class="s">&#39;you&#39;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>love you
+</pre></div>
+
+
+<p>不爽的是，输出内容会用一个空格分开。</p>
+<p>在Python 3.x中这个办法行不通，因为<code>print</code>已经成为了个函数，加逗号反正是不行的了。正确的姿势应当是指定<code>print()</code>的参数，包含多参量分隔符<code>sep</code>和输出末尾添加内容<code>end</code>。上述就应该写成<code>print('love', end=' ')</code>以实现不换行。这毫无疑问是个很优秀的改进，但在此处不多做讨论，我们还是以2.7版本为主。</p>
+<h3 id="514-ccjavapython"><a name="user-content-514-ccjavapython" href="#514-ccjavapython" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.1.4 我学过c/c++/java，它们都有格式化输出，在Python里怎么办？</h3>
+<p>没有相关语言基础的人可能会看不懂下面这一段内容，但是请完全不要在意。这一点都不会影响你的学习进程。</p>
+<p>在Python并不存在“格式化输出”，但是格式化字符串是确实存在的——任意字符串对象都有一个<code>%</code>运算符，它的作用就是将原串中的格式化文本变量带入，如：</p>
+<div class="codehilite"><pre><span class="n">everything</span><span class="o">=</span><span class="s">&#39;everythin&#39;</span>
+<span class="n">answer</span><span class="o">=</span><span class="mi">42</span>
+<span class="n">explain</span><span class="o">=</span><span class="s">&#39;The answer to life, the universe, and </span><span class="si">%s</span><span class="s">, is </span><span class="si">%d</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">everything</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">explain</span>
+<span class="k">print</span> <span class="s">&#39;The answer to life, the universe, and </span><span class="si">%s</span><span class="s">, is </span><span class="si">%d</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">everything</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>The answer to life, the universe, and everythin, is 42
+The answer to life, the universe, and everythin, is 42
+</pre></div>
+
+
+<p>当然，Python还有更加Pythonic的格式化输出方式。之前提到Python中的输出都是对<code>__str__()</code>方法调用后得到的字符串的输出，因此可以理解为Python里面本不存在过多的变量类型。所以更具有Python风格的字符串格式处理是如下<code>format()</code>方法。</p>
+<div class="codehilite"><pre><span class="k">print</span> <span class="s">&#39;Coordinates: {latitude}, {longitude}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="s">&#39;37.24N&#39;</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="s">&#39;-115.81W&#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">3</span><span class="o">-</span><span class="mi">5j</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">&#39;The complex number {0} is formed from the real part {0.real} and the imaginary part {0.imag}.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>Coordinates: 37.24N, -115.81W
+The complex number (3-5j) is formed from the real part 3.0 and the imaginary part -5.0.
+</pre></div>
+
+
+<p>可以看到这里并没有指定类型，但是都能够正常输出。对于熟悉C/C++的人而言，完全对象化将是需要一定时间适应才能跨过去的坎儿。</p>
+<h2 id="52"><a name="user-content-52" href="#52" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.2 然后是输入了吧？</h2>
+<p>输入有两个相关的基本函数。需要说明的是，输入<strong>不是语句</strong>，这一点与print不同。输入都是函数。关于函数的概念会在后文中说明，如果现在不明白也不要在意，记住怎么用就好。</p>
+<h3 id="521"><a name="user-content-521" href="#521" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.2.1 关于输入的一致性——还是字符串</h3>
+<p>基本输入函数是<code>raw_input([prompt])</code>，这里方括号括起来的<code>[prompt]</code>是按照Python文档的风格，表示非必须参数。也就是说可以直接写<code>raw_input()</code>，也可以写成<code>raw_input('Ahh')</code>。</p>
+<p>它的作用是：读取用户输入的一行字符串。</p>
+<p>基本作用类似于C语言里的<code>gets()</code>。反正就是执行这个函数时，程序会停下来，等用户输入点什么东西，输入完了按<code>Enter</code>回车键之后，程序会继续，并且把输入的这行内容以字符串的形式作为<code>raw_input()</code>的结果返回过来。</p>
+<h3 id="522"><a name="user-content-522" href="#522" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.2.2 如果我输入的是数字什么的，它怎么处理？</h3>
+<p>考虑下面这段程序：</p>
+<div class="codehilite"><pre><span class="n">x</span><span class="o">=</span><span class="nb">raw_input</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">x</span>
+<span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+
+<p>这其中<code>type(x)</code>的作用是输出x变量的类型。我们运行它，输入：</p>
+<div class="codehilite"><pre>1314
+</pre></div>
+
+
+<p>可以看到如下结果</p>
+<div class="codehilite"><pre>1314
+&lt;type &#39;str&#39;&gt;
+</pre></div>
+
+
+<p>看到了么？还是<code>str</code>类型，还是字符串。</p>
+<p>结论是：<strong>不处理</strong></p>
+<p>让我们看看raw这个英文单词的翻译：</p>
+<blockquote>
+<ul>
+<li>raw</li>
+</ul>
+<p>n. 痛处；生的食物；纯酒；粗糖</p>
+<p>adj. 生的；未烹制的；未煮的；未经加工的</p>
+<p>v. 使皮开肉绽</p>
+<p>网络 未加工的；原始；未煮过的</p>
+<p>它的结果就是原始输入数据。原始输入数据自然是键盘敲进去的字符串啦~</p>
+</blockquote>
+<h3 id="523"><a name="user-content-523" href="#523" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.2.3 可是我就是要数字~数字嘛~~</h3>
+<p>这就涉及到另一个输入函数了：<code>input([prompt])</code>。</p>
+<p>它的作用是：将用户输入的内容当做是一个Python表达式交给解释器算一下，然后把结果作为返回值输出。动态语言的好处之一就体现出来了，不用编译，想算什么算什么，就是这么任性。</p>
+<p>看看下面这个例子：</p>
+<div class="codehilite"><pre><span class="n">x</span><span class="o">=</span><span class="nb">input</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">x</span>
+<span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+
+<p>输入：</p>
+<div class="codehilite"><pre>1314
+</pre></div>
+
+
+<p>输出：</p>
+<div class="codehilite"><pre>1314
+&lt;type &#39;int&#39;&gt;
+</pre></div>
+
+
+<p>既然经过了解释器，输入的内容如果是个数字自然就解释成数字了。当然如果你想输入个<code>3*4</code>之类的，它会把计算结果存下来。</p>
+<p>输入：</p>
+<div class="codehilite"><pre>3*4
+</pre></div>
+
+
+<p>输出：</p>
+<div class="codehilite"><pre>12
+&lt;type &#39;int&#39;&gt;
+</pre></div>
+
+
+<p>但是当你输入个字符串的时候，问题就出现了：对于解释器而言，字符串必须是用<code>' '</code>或者<code>" "</code>括起来的部分。而习惯上输入字符串是直接输入的，这样就会出错。</p>
+<p>输入：</p>
+<div class="codehilite"><pre>love
+</pre></div>
+
+
+<p>输出：</p>
+<div class="codehilite"><pre>Traceback (most recent call last):
   File &quot;/Users/coldwings/Documents/Study/test.py&quot;, line 2, in &lt;module&gt;
     x=input()
   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
-NameError: name &#39;love&#39; is not defined</pre><p>正确的姿势应该是这样:</p><p>输入：</p><pre class='md-fences mock-cm' style='display:block;position:relative'>&#39;love&#39;</pre><p>输出：</p><pre class='md-fences mock-cm' style='display:block;position:relative'>love
-&lt;type &#39;str&#39;&gt;</pre><h3 ><a name='header-c188' class='md-header-anchor'></a>5.2.4 好吧，说了这么多，那个prompt到底是什么？</h3><p>简单的说，就是给用户看的输入提示。毕竟什么都不输出的话就让别人输入内容，用户会满头雾水的。</p><p>其实以下两段程序可以认为是等价的。</p><p>第一段：</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap  "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-string">'input something:'</span>,</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">a</span>=<span class="cm-builtin">raw_input</span>()</span></pre></div></div></div></div></div></div></div></pre><p>第二段：</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">a</span>=<span class="cm-builtin">raw_input</span>(<span class="cm-string">'input something: '</span>)</span></pre></div></div></div></div></div></div></div></pre><p>注意由于<code>print</code>语句在加了个逗号的情况下，会多输出个空格代替换行，因此上面程序中如果要取得完全相同的视觉效果，就需要在<code>prompt</code>串的末尾加入一个空格。</p><h1 ><a name='header-c196' class='md-header-anchor'></a>六、“变量”与“赋值”</h1><p>这个两个概念充满了各种编程语言，这里沿用了这个称呼。但是这是Python，就算你有其它语言的经验，也请暂时放到一边。因为在Python中，实际上是<strong>不存在真正意义上的变量与赋值</strong>的。</p><h2 ><a name='header-c198' class='md-header-anchor'></a>6.1 变量——谁是啥</h2><p>顾名思义，变量就是可以变动的量，我们可以随时改变它的值。通常变量是有类型的，字符有字符变量，整数是整数变量，浮点数有浮点变量（其实浮点数就是数学上所说的有理数：可能有小数点后面的部分）。</p><p>就像我们在做数学证明题中的用法一样：</p><pre class='md-fences mock-cm' style='display:block;position:relative'>令a为42</pre><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap  "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">a</span>=<span class="cm-number">42</span></span></pre></div></div></div></div></div></div></div></pre><p>这就成为了一个声明：a是一个量，它代表着42。与数学不同的是，a在Python里还是个可以变化的量。随着程序的执行，我们可能会改变a的取值。在数学证明题里你一会儿令a为42一会儿令a为7有可能会被数学老师吊着打，但是在这里是没问题的：</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap  "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 67.2109375px; top: 66px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">a</span>=<span class="cm-number">42</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-variable">a</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">a</span>=<span class="cm-number">7</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-variable">a</span></span></pre></div></div></div></div></div></div></div></pre><pre class='md-fences mock-cm' style='display:block;position:relative'>42
-7</pre><p>第一次输出a时，它是42；第二次输出a时，它是7。这就是“变”字所在。所谓变量，就是我们创造出来的一个名字而已，我们说它是啥，它就是啥。</p><h2 ><a name='header-c207' class='md-header-anchor'></a>6.2 赋值——我要让谁是啥谁就是啥</h2><h3 ><a name='header-c208' class='md-header-anchor'></a>6.2.1 对于初学者</h3><p>在之前的章节中，我们可以看到很多<code>=</code>，这里的<code>=</code>并不是数学方程里的“等于”关系。相等是一个等号两边完全对等的关系说明，而在Python中单个的<code>=</code>是赋值运算。它的<code>=</code>两边并不是对等的。<code>=</code>左边必须是一个变量名（或者是<strong>元组</strong>之类的玩意），右边则可以是任何对象（还记得Python的完全对象化么？数什么的也都是对象），而作用就是：</p><p><strong>让左边的变量名指向右边的对象</strong></p><p>当然，如果右边是一个计算式，或者一个函数什么的，程序会先把右边的结果算出来，再把左边的名字指向计算结果。这个过程就称作赋值。</p><h3 ><a name='header-c212' class='md-header-anchor'></a>6.2.2 对于有编程基础的读者</h3><p>在Python里其实是不存在变量的。之前说过Python里所有的东西都是对象，而类似“变量”的东西其实都只不过是一张标签。对于这样一段程序：</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">a</span>=<span class="cm-number">42</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-variable">a</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">a</span>=<span class="cm-number">7</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span> <span class="cm-variable">a</span></span></pre></div></div></div></div></div></div></div></pre><p>程序解释的实际流程其实是：创建了一个值为42的整数对象，然后给它贴上a的标签，输出，然后再创建一个值为7的对象，把a这个标签换到它身上，然后输出。赋值的意义就是这个贴标签的过程。</p><p>这就是为什么python里一个变量名可以一会儿为整数一会儿为实数，过一会儿还能改成字符串或者其它的什么东西。Python的变量没有指明类型的根本原因就是因为它只是指向对象的标签，Python本身其实是一个强类型语言。新手面临的很多“变量的值莫名其妙变了”或者“变量的值莫名其妙不变”之类的问题根源大都在于这个机制，因此理解这一点可以减少很多程序上的bug。</p><h1 ><a name='header-c217' class='md-header-anchor'></a>七、开始基本流程</h1><p>大家都知道，程序嘛，就是一条一条执行的玩意。当然还有个流程控制问题，而最基本的流程控制，就是判断和循环。</p><h2 ><a name='header-c219' class='md-header-anchor'></a>7.1 先是判断——以追妹子为例</h2><p>判断的基本形式可以看成如下流程：</p><p><img src='img/7/7.1.png' alt='判断流程' /></p><p>来个形象一点的比喻，就是：</p><p>你去酒吧，这时候视野里出现了一只妹纸，你可以选择是不是给她送上一杯酒然后套套近乎什么的，但这些有一个基本判断标准：这个妹子看上去挺喜欢，那就去套近乎；完全没感觉，那就选择不看她。用Python的语言来说就是这样的。</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap     "><div class="CodeMirror-scroll" tabindex="-1" draggable="false"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-error">妹子</span>.<span class="cm-variable">coming</span>()</span></pre><pre><span style="padding-right: 0.1px;"><span class="cm-keyword">if</span> <span class="cm-error">我</span>.<span class="cm-variable">like</span>(<span class="cm-error">妹子</span>):</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">送酒</span></span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">套近乎</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">else</span>:</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">无视</span></span></pre></div></div></div></div></div></div></div></pre><p>当然这里是以男性角度举例的。如果你是一朵妹纸，或者其它情况，可以做出类似的比喻。无论怎样，这个过程就是我们做决策的流程，也是程序中判断流程的基本实现。</p><p>有人说“你这个例子不够全面。送酒了就能套近乎？万一妹子拒绝了那不就只能放弃了么！还有啊第一眼看到妹子没感觉不能直接无视啊，如果妹子行为举止很带感呢？不观察一下怎么行！”</p><p>好吧我表示没怎么去过酒吧所以不懂，按照这个原则的话可以拓展一下。</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-error">妹子</span>.<span class="cm-variable">coming</span>()</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">if</span> <span class="cm-error">我</span>.<span class="cm-variable">like</span>(<span class="cm-error">妹子</span>):</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">送酒</span></span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">if</span> <span class="cm-error">妹子</span>.<span class="cm-variable">accepted</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-error">套近乎</span></span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">else</span>:</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-error">无视</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">elif</span> <span class="cm-error">我</span>.<span class="cm-variable">feel</span>(<span class="cm-error">妹子</span>) <span class="cm-operator">is</span> <span class="cm-error">带感</span>:</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">送酒</span></span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">if</span> <span class="cm-error">妹子</span>.<span class="cm-variable">accepted</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-error">套近乎</span></span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">else</span>:</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-error">无视</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">else</span>:</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">无视</span></span></pre></div></div></div></div></div></div></div></pre><p><code>elif</code>可以判断出来这是<code>else if</code>的缩写，但是如果按照Python规则，应该写成<code>else: if</code>，而这样看起来很奇怪，还容易引起<strong>缩进问题</strong>，所以广大人民群众就乐于用缩写了。</p><p>嘛，这个例子说明，在酒吧跟陌生妹子套近乎显然是个很复杂的事情——比写程序复杂。至少对于一段Python程序而言，判断只用这么几样东西就可以了，<code>if</code>，<code>elif</code>，<code>else</code>，在英文中的意思分别是“如果”，“否则如果”，“否则”。所以简单翻译一下，这两段程序和之前那么一长串中文介绍其实是等价的。</p><h2 ><a name='header-c231' class='md-header-anchor'></a>7.2 然后是循环——还是那个妹子</h2><p>循环嘛，故名思议，不断重复的流程。基本上是这么个过程</p><p><img src='img/7/7.2.png' alt='循环流程' /></p><p>如果大家还是喜欢比喻，那么我们来考虑一下如下情况：</p><p>上次酒吧约的妹子成功了一半，但是妹子有个要求：必须在现在每天都去她工作的地方接她下班，坚持一个月（假设是2015年4月）。那么我应该怎么做呢？</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap  "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">day</span> <span class="cm-operator">in</span> <span class="cm-error">日期</span>(<span class="cm-number">2015</span><span class="cm-error">年</span><span class="cm-number">4</span><span class="cm-error">月</span>):</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">我</span>.<span class="cm-variable">pickup</span>(<span class="cm-error">妹子</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-error">后来</span></span></pre></div></div></div></div></div></div></div></pre><p>于是对于2015年4月的每一天，“我”都会pickup妹子一次。好像很不错的样子。</p><p>但是万一妹子没有指定时间呢？只是要求每天都去接她，直到她满意为止……</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">while</span> <span class="cm-operator">not</span> <span class="cm-error">妹子</span>.<span class="cm-variable">satisfied</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">我</span>.<span class="cm-variable">pickup</span>(<span class="cm-error">妹子</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-error">后来</span></span></pre></div></div></div></div></div></div></div></pre><p>再多想想：如果妹子中途说不行不行不想理你了不要再见到你了……先不考虑违背妹子意见的情况，为了节约体力……</p><p>指定时间</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">day</span> <span class="cm-operator">in</span> <span class="cm-error">日期</span>(<span class="cm-number">2015</span><span class="cm-error">年</span><span class="cm-number">4</span><span class="cm-error">月</span>):</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">我</span>.<span class="cm-variable">pickup</span>(<span class="cm-error">妹子</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">if</span> <span class="cm-error">妹子</span>.<span class="cm-variable">refused</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-keyword">break</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-error">后来</span></span></pre></div></div></div></div></div></div></div></pre><p>直到满意</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">while</span> <span class="cm-operator">not</span> <span class="cm-error">妹子</span>.<span class="cm-variable">satisfied</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">我</span>.<span class="cm-variable">pickup</span>(<span class="cm-error">妹子</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">if</span> <span class="cm-error">妹子</span>.<span class="cm-variable">refused</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-keyword">break</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-error">后来</span></span></pre></div></div></div></div></div></div></div></pre><p>break的作用是跳出当前循环。</p><p>于是妹子一旦拒绝，基本就没戏了，那就不要再接了（我知道有时候妹子说不要接了但是一定要坚持我真的知道！）……</p><p>假定妹子中途拒绝了那就没有后来了，可是如果顺利结束了（时间到/妹子满意）了，好感度增加，可以更进一步哦……那么基本上是这样的：</p><p>指定时间</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap  "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">day</span> <span class="cm-operator">in</span> <span class="cm-error">日期</span>(<span class="cm-number">2015</span><span class="cm-error">年</span><span class="cm-number">4</span><span class="cm-error">月</span>):</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">我</span>.<span class="cm-variable">pickup</span>(<span class="cm-error">妹子</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">if</span> <span class="cm-error">妹子</span>.<span class="cm-variable">refused</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-keyword">break</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">else</span>:</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">好感度</span>+=<span class="cm-number">1</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-error">后来</span></span></pre></div></div></div></div></div></div></div></pre><p>直到满意</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">while</span> <span class="cm-operator">not</span> <span class="cm-error">妹子</span>.<span class="cm-variable">satisfied</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">我</span>.<span class="cm-variable">pickup</span>(<span class="cm-error">妹子</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">if</span> <span class="cm-error">妹子</span>.<span class="cm-variable">refused</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-keyword">break</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">else</span>:</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">好感度</span>+=<span class="cm-number">1</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-error">后来</span></span></pre></div></div></div></div></div></div></div></pre><p>对于循环中的else分支，应该属于python循环中比较独特的一个用法。当循环正常退出而不是中途break的情况发生时，则执行else里面的内容；相反若是break跳出，则会跳过else分支。</p><p>唔……结论还是：追妹子比写程序麻烦多了，注定孤独一生啊……</p><h2 ><a name='header-c254' class='md-header-anchor'></a>7.3 又是那个非常重要的点：缩进</h2><p>追妹子是有讲究的，写程序也有自己的讲究。在Python里最重要的讲究之一就是缩进了。对于学习过其它语言的同学来说，一句话说明就可以了：Python里面没有begin-end或者花括号之类的代码块划分，划分的标准就是缩进。两行程序缩进不同，就判断为不同的缩进块，因此严格按照缩进写程序是保证程序正确执行的<strong>必须的</strong>要求。这个做法好不好，仁者见仁智者见智，但至少这样的做法强制写程序的人使用严格的缩进，增强了代码的可读性。</p><p>对于没有编程基础的同学而言，缩进并不神秘。</p><p>上述程序中，某些语句的最前面会出现很多空格。空格的意义就是缩进。在Python里，缩进用来告诉解释器，这行语句是属于循环中的还是属于循环外，是条件判断内还是条件判断外或者判断本身。一下两段（伪）程序：</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">while</span> <span class="cm-operator">not</span> <span class="cm-error">妹子</span>.<span class="cm-variable">satisfied</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">我</span>.<span class="cm-variable">pickup</span>(<span class="cm-error">妹子</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">if</span> <span class="cm-error">妹子</span>.<span class="cm-variable">refused</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-keyword">break</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">else</span>:</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">好感度</span>+=<span class="cm-number">1</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-error">后来</span></span></pre></div></div></div></div></div></div></div></pre><p>与</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">while</span> <span class="cm-operator">not</span> <span class="cm-error">妹子</span>.<span class="cm-variable">satisfied</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">我</span>.<span class="cm-variable">pickup</span>(<span class="cm-error">妹子</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">if</span> <span class="cm-error">妹子</span>.<span class="cm-variable">refused</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-keyword">break</span></span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">else</span>:</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  <span class="cm-error">好感度</span>+=<span class="cm-number">1</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-error">后来</span></span></pre></div></div></div></div></div></div></div></pre><p>看起来只有一点点不同：</p><pre class="md-fences"> <div class="CodeMirror cm-s-default CodeMirror-wrap "><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 22px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">else</span>:</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-error">好感度</span>+=<span class="cm-number">1</span></span></pre></div></div></div></div></div></div></div></pre><p>只有缩进不一样，但是实际意义是有很大不同的。</p><p>对于前者，else与while对齐，说明这个else是while循环的else，只有当循环结束且没有break中途跳出时才会执行的语句。而后者，else与if对齐，是条件判断的else分支，只要妹子没拒绝，好感度就会增加。</p><p>这么一看，其实第二段程序更加贴近实际……吧……？也许追妹子之前还是先调整好缩进比较重要……</p><h2 ><a name='header-c266' class='md-header-anchor'></a>7.4 一点点附加说明</h2><p>到现在为止，我们可以做一些非常非常简单的东西了：有输入，有输出，有赋值，有判断。这样做个小菜单什么的都没有太大问题。大多数的程序其实就是由这么一些简单的东西组成的。对于简单脚本，这些已经能做好大多数的工作了。</p><p>后续章节会逐步介绍Python中的各种常见类型和运算，以及一些模块化和对象化编程的知识，为的是更好地写出有用的程序。</p></div>
-</body>
-</html>
+NameError: name &#39;love&#39; is not defined
+</pre></div>
+
+
+<p>正确的姿势应该是这样:</p>
+<p>输入：</p>
+<div class="codehilite"><pre>&#39;love&#39;
+</pre></div>
+
+
+<p>输出：</p>
+<div class="codehilite"><pre>love
+&lt;type &#39;str&#39;&gt;
+</pre></div>
+
+
+<h3 id="524-prompt"><a name="user-content-524-prompt" href="#524-prompt" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.2.4 好吧，说了这么多，那个prompt到底是什么？</h3>
+<p>简单的说，就是给用户看的输入提示。毕竟什么都不输出的话就让别人输入内容，用户会满头雾水的。</p>
+<p>其实以下两段程序可以认为是等价的。</p>
+<p>第一段：</p>
+<div class="codehilite"><pre><span class="k">print</span> <span class="s">&#39;input something:&#39;</span><span class="p">,</span>
+<span class="n">a</span><span class="o">=</span><span class="nb">raw_input</span><span class="p">()</span>
+</pre></div>
+
+
+<p>第二段：</p>
+<div class="codehilite"><pre><span class="n">a</span><span class="o">=</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;input something: &#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>注意由于<code>print</code>语句在加了个逗号的情况下，会多输出个空格代替换行，因此上面程序中如果要取得完全相同的视觉效果，就需要在<code>prompt</code>串的末尾加入一个空格。</p>
+<h1 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>六、“变量”与“赋值”</h1>
+<p>这个两个概念充满了各种编程语言，这里沿用了这个称呼。但是这是Python，就算你有其它语言的经验，也请暂时放到一边。因为在Python中，实际上是<strong>不存在真正意义上的变量与赋值</strong>的。</p>
+<h2 id="61"><a name="user-content-61" href="#61" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6.1 变量——谁是啥</h2>
+<p>顾名思义，变量就是可以变动的量，我们可以随时改变它的值。通常变量是有类型的，字符有字符变量，整数是整数变量，浮点数有浮点变量（其实浮点数就是数学上所说的有理数：可能有小数点后面的部分）。</p>
+<p>就像我们在做数学证明题中的用法一样：</p>
+<div class="codehilite"><pre>令a为42
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="n">a</span><span class="o">=</span><span class="mi">42</span>
+</pre></div>
+
+
+<p>这就成为了一个声明：a是一个量，它代表着42。与数学不同的是，a在Python里还是个可以变化的量。随着程序的执行，我们可能会改变a的取值。在数学证明题里你一会儿令a为42一会儿令a为7有可能会被数学老师吊着打，但是在这里是没问题的：</p>
+<div class="codehilite"><pre><span class="n">a</span><span class="o">=</span><span class="mi">42</span>
+<span class="k">print</span> <span class="n">a</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">7</span>
+<span class="k">print</span> <span class="n">a</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>42
+7
+</pre></div>
+
+
+<p>第一次输出a时，它是42；第二次输出a时，它是7。这就是“变”字所在。所谓变量，就是我们创造出来的一个名字而已，我们说它是啥，它就是啥。</p>
+<h2 id="62"><a name="user-content-62" href="#62" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6.2 赋值——我要让谁是啥谁就是啥</h2>
+<h3 id="621"><a name="user-content-621" href="#621" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6.2.1 对于初学者</h3>
+<p>在之前的章节中，我们可以看到很多<code>=</code>，这里的<code>=</code>并不是数学方程里的“等于”关系。相等是一个等号两边完全对等的关系说明，而在Python中单个的<code>=</code>是赋值运算。它的<code>=</code>两边并不是对等的。<code>=</code>左边必须是一个变量名（或者是<strong>元组</strong>之类的玩意），右边则可以是任何对象（还记得Python的完全对象化么？数什么的也都是对象），而作用就是：</p>
+<p><strong>让左边的变量名指向右边的对象</strong></p>
+<p>当然，如果右边是一个计算式，或者一个函数什么的，程序会先把右边的结果算出来，再把左边的名字指向计算结果。这个过程就称作赋值。</p>
+<h3 id="622"><a name="user-content-622" href="#622" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6.2.2 对于有编程基础的读者</h3>
+<p>在Python里其实是不存在变量的。之前说过Python里所有的东西都是对象，而类似“变量”的东西其实都只不过是一张标签。对于这样一段程序：</p>
+<div class="codehilite"><pre><span class="n">a</span><span class="o">=</span><span class="mi">42</span>
+<span class="k">print</span> <span class="n">a</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">7</span>
+<span class="k">print</span> <span class="n">a</span>
+</pre></div>
+
+
+<p>程序解释的实际流程其实是：创建了一个值为42的整数对象，然后给它贴上a的标签，输出，然后再创建一个值为7的对象，把a这个标签换到它身上，然后输出。赋值的意义就是这个贴标签的过程。</p>
+<p>这就是为什么python里一个变量名可以一会儿为整数一会儿为实数，过一会儿还能改成字符串或者其它的什么东西。Python的变量没有指明类型的根本原因就是因为它只是指向对象的标签，Python本身其实是一个强类型语言。新手面临的很多“变量的值莫名其妙变了”或者“变量的值莫名其妙不变”之类的问题根源大都在于这个机制，因此理解这一点可以减少很多程序上的bug。</p>
+<h1 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>七、开始基本流程</h1>
+<p>大家都知道，程序嘛，就是一条一条执行的玩意。当然还有个流程控制问题，而最基本的流程控制，就是判断和循环。</p>
+<h2 id="71"><a name="user-content-71" href="#71" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7.1 先是判断——以追妹子为例</h2>
+<p>判断的基本形式可以看成如下流程：</p>
+<p><img alt="判断流程" src="img/7/7.1.png" title="判断流程" /></p>
+<p>来个形象一点的比喻，就是：</p>
+<p>你去酒吧，这时候视野里出现了一只妹纸，你可以选择是不是给她送上一杯酒然后套套近乎什么的，但这些有一个基本判断标准：这个妹子看上去挺喜欢，那就去套近乎；完全没感觉，那就选择不看她。用Python的语言来说就是这样的。</p>
+<div class="codehilite"><pre><span class="err">妹子</span><span class="o">.</span><span class="n">coming</span><span class="p">()</span>
+<span class="k">if</span> <span class="err">我</span><span class="o">.</span><span class="n">like</span><span class="p">(</span><span class="err">妹子</span><span class="p">):</span>
+    <span class="err">送酒</span>
+    <span class="err">套近乎</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="err">无视</span>
+</pre></div>
+
+
+<p>当然这里是以男性角度举例的。如果你是一朵妹纸，或者其它情况，可以做出类似的比喻。无论怎样，这个过程就是我们做决策的流程，也是程序中判断流程的基本实现。</p>
+<p>有人说“你这个例子不够全面。送酒了就能套近乎？万一妹子拒绝了那不就只能放弃了么！还有啊第一眼看到妹子没感觉不能直接无视啊，如果妹子行为举止很带感呢？不观察一下怎么行！”</p>
+<p>好吧我表示没怎么去过酒吧所以不懂，按照这个原则的话可以拓展一下。</p>
+<div class="codehilite"><pre><span class="err">妹子</span><span class="o">.</span><span class="n">coming</span><span class="p">()</span>
+<span class="k">if</span> <span class="err">我</span><span class="o">.</span><span class="n">like</span><span class="p">(</span><span class="err">妹子</span><span class="p">):</span>
+    <span class="err">送酒</span>
+    <span class="k">if</span> <span class="err">妹子</span><span class="o">.</span><span class="n">accepted</span><span class="p">():</span>
+        <span class="err">套近乎</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="err">无视</span>
+<span class="k">elif</span> <span class="err">我</span><span class="o">.</span><span class="n">feel</span><span class="p">(</span><span class="err">妹子</span><span class="p">)</span> <span class="ow">is</span> <span class="err">带感</span><span class="p">:</span>
+    <span class="err">送酒</span>
+    <span class="k">if</span> <span class="err">妹子</span><span class="o">.</span><span class="n">accepted</span><span class="p">():</span>
+        <span class="err">套近乎</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="err">无视</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="err">无视</span>
+</pre></div>
+
+
+<p><code>elif</code>可以判断出来这是<code>else if</code>的缩写，但是如果按照Python规则，应该写成<code>else: if</code>，而这样看起来很奇怪，还容易引起<strong>缩进问题</strong>，所以广大人民群众就乐于用缩写了。</p>
+<p>嘛，这个例子说明，在酒吧跟陌生妹子套近乎显然是个很复杂的事情——比写程序复杂。至少对于一段Python程序而言，判断只用这么几样东西就可以了，<code>if</code>，<code>elif</code>，<code>else</code>，在英文中的意思分别是“如果”，“否则如果”，“否则”。所以简单翻译一下，这两段程序和之前那么一长串中文介绍其实是等价的。</p>
+<h2 id="72"><a name="user-content-72" href="#72" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7.2 然后是循环——还是那个妹子</h2>
+<p>循环嘛，故名思议，不断重复的流程。基本上是这么个过程</p>
+<p><img alt="循环流程" src="img/7/7.2.png" title="循环流程" /></p>
+<p>如果大家还是喜欢比喻，那么我们来考虑一下如下情况：</p>
+<p>上次酒吧约的妹子成功了一半，但是妹子有个要求：必须在现在每天都去她工作的地方接她下班，坚持一个月（假设是2015年4月）。那么我应该怎么做呢？</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="err">日期</span><span class="p">(</span><span class="mi">2015</span><span class="err">年</span><span class="mi">4</span><span class="err">月</span><span class="p">):</span>
+    <span class="err">我</span><span class="o">.</span><span class="n">pickup</span><span class="p">(</span><span class="err">妹子</span><span class="p">)</span>
+<span class="err">后来</span>
+</pre></div>
+
+
+<p>于是对于2015年4月的每一天，“我”都会pickup妹子一次。好像很不错的样子。</p>
+<p>但是万一妹子没有指定时间呢？只是要求每天都去接她，直到她满意为止……</p>
+<div class="codehilite"><pre><span class="k">while</span> <span class="ow">not</span> <span class="err">妹子</span><span class="o">.</span><span class="n">satisfied</span><span class="p">():</span>
+    <span class="err">我</span><span class="o">.</span><span class="n">pickup</span><span class="p">(</span><span class="err">妹子</span><span class="p">)</span>
+<span class="err">后来</span>
+</pre></div>
+
+
+<p>再多想想：如果妹子中途说不行不行不想理你了不要再见到你了……先不考虑违背妹子意见的情况，为了节约体力……</p>
+<p>指定时间</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="err">日期</span><span class="p">(</span><span class="mi">2015</span><span class="err">年</span><span class="mi">4</span><span class="err">月</span><span class="p">):</span>
+    <span class="err">我</span><span class="o">.</span><span class="n">pickup</span><span class="p">(</span><span class="err">妹子</span><span class="p">)</span>
+    <span class="k">if</span> <span class="err">妹子</span><span class="o">.</span><span class="n">refused</span><span class="p">():</span>
+        <span class="k">break</span>
+<span class="err">后来</span>
+</pre></div>
+
+
+<p>直到满意</p>
+<div class="codehilite"><pre><span class="k">while</span> <span class="ow">not</span> <span class="err">妹子</span><span class="o">.</span><span class="n">satisfied</span><span class="p">():</span>
+    <span class="err">我</span><span class="o">.</span><span class="n">pickup</span><span class="p">(</span><span class="err">妹子</span><span class="p">)</span>
+    <span class="k">if</span> <span class="err">妹子</span><span class="o">.</span><span class="n">refused</span><span class="p">():</span>
+        <span class="k">break</span>
+<span class="err">后来</span>
+</pre></div>
+
+
+<p>break的作用是跳出当前循环。</p>
+<p>于是妹子一旦拒绝，基本就没戏了，那就不要再接了（我知道有时候妹子说不要接了但是一定要坚持我真的知道！）……</p>
+<p>假定妹子中途拒绝了那就没有后来了，可是如果顺利结束了（时间到/妹子满意）了，好感度增加，可以更进一步哦……那么基本上是这样的：</p>
+<p>指定时间</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="err">日期</span><span class="p">(</span><span class="mi">2015</span><span class="err">年</span><span class="mi">4</span><span class="err">月</span><span class="p">):</span>
+    <span class="err">我</span><span class="o">.</span><span class="n">pickup</span><span class="p">(</span><span class="err">妹子</span><span class="p">)</span>
+    <span class="k">if</span> <span class="err">妹子</span><span class="o">.</span><span class="n">refused</span><span class="p">():</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="err">好感度</span><span class="o">+=</span><span class="mi">1</span>
+<span class="err">后来</span>
+</pre></div>
+
+
+<p>直到满意</p>
+<div class="codehilite"><pre><span class="k">while</span> <span class="ow">not</span> <span class="err">妹子</span><span class="o">.</span><span class="n">satisfied</span><span class="p">():</span>
+    <span class="err">我</span><span class="o">.</span><span class="n">pickup</span><span class="p">(</span><span class="err">妹子</span><span class="p">)</span>
+    <span class="k">if</span> <span class="err">妹子</span><span class="o">.</span><span class="n">refused</span><span class="p">():</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="err">好感度</span><span class="o">+=</span><span class="mi">1</span>
+<span class="err">后来</span>
+</pre></div>
+
+
+<p>对于循环中的else分支，应该属于python循环中比较独特的一个用法。当循环正常退出而不是中途break的情况发生时，则执行else里面的内容；相反若是break跳出，则会跳过else分支。</p>
+<p>唔……结论还是：追妹子比写程序麻烦多了，注定孤独一生啊……</p>
+<h2 id="73"><a name="user-content-73" href="#73" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7.3 又是那个非常重要的点：缩进</h2>
+<p>追妹子是有讲究的，写程序也有自己的讲究。在Python里最重要的讲究之一就是缩进了。对于学习过其它语言的同学来说，一句话说明就可以了：Python里面没有begin-end或者花括号之类的代码块划分，划分的标准就是缩进。两行程序缩进不同，就判断为不同的缩进块，因此严格按照缩进写程序是保证程序正确执行的<strong>必须的</strong>要求。这个做法好不好，仁者见仁智者见智，但至少这样的做法强制写程序的人使用严格的缩进，增强了代码的可读性。</p>
+<p>对于没有编程基础的同学而言，缩进并不神秘。</p>
+<p>上述程序中，某些语句的最前面会出现很多空格。空格的意义就是缩进。在Python里，缩进用来告诉解释器，这行语句是属于循环中的还是属于循环外，是条件判断内还是条件判断外或者判断本身。一下两段（伪）程序：</p>
+<div class="codehilite"><pre><span class="k">while</span> <span class="ow">not</span> <span class="err">妹子</span><span class="o">.</span><span class="n">satisfied</span><span class="p">():</span>
+    <span class="err">我</span><span class="o">.</span><span class="n">pickup</span><span class="p">(</span><span class="err">妹子</span><span class="p">)</span>
+    <span class="k">if</span> <span class="err">妹子</span><span class="o">.</span><span class="n">refused</span><span class="p">():</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="err">好感度</span><span class="o">+=</span><span class="mi">1</span>
+<span class="err">后来</span>
+</pre></div>
+
+
+<p>与</p>
+<div class="codehilite"><pre><span class="k">while</span> <span class="ow">not</span> <span class="err">妹子</span><span class="o">.</span><span class="n">satisfied</span><span class="p">():</span>
+    <span class="err">我</span><span class="o">.</span><span class="n">pickup</span><span class="p">(</span><span class="err">妹子</span><span class="p">)</span>
+    <span class="k">if</span> <span class="err">妹子</span><span class="o">.</span><span class="n">refused</span><span class="p">():</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="err">好感度</span><span class="o">+=</span><span class="mi">1</span>
+<span class="err">后来</span>
+</pre></div>
+
+
+<p>看起来只有一点点不同：</p>
+<div class="codehilite"><pre><span class="k">else</span><span class="p">:</span>
+    <span class="err">好感度</span><span class="o">+=</span><span class="mi">1</span>
+</pre></div>
+
+
+<p>只有缩进不一样，但是实际意义是有很大不同的。</p>
+<p>对于前者，else与while对齐，说明这个else是while循环的else，只有当循环结束且没有break中途跳出时才会执行的语句。而后者，else与if对齐，是条件判断的else分支，只要妹子没拒绝，好感度就会增加。</p>
+<p>这么一看，其实第二段程序更加贴近实际……吧……？也许追妹子之前还是先调整好缩进比较重要……</p>
+<h2 id="74"><a name="user-content-74" href="#74" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7.4 一点点附加说明</h2>
+<p>到现在为止，我们可以做一些非常非常简单的东西了：有输入，有输出，有赋值，有判断。这样做个小菜单什么的都没有太大问题。大多数的程序其实就是由这么一些简单的东西组成的。对于简单脚本，这些已经能做好大多数的工作了。</p>
+<p>后续章节会逐步介绍Python中的各种常见类型和运算，以及一些模块化和对象化编程的知识，为的是更好地写出有用的程序。</p></article></body></html>
